@@ -25,7 +25,7 @@ public class SplitStringTest {
 	public static String Splitstringss(String str, int limit) {
 		String result = "";
 		String[] array = str.split("\\.", limit),Array = null;
-		int i=0,j = 0;
+		int i=0;
 		for(i=0;i<array.length;i++) {
 			if (array[i].contains("Jayant")) {
 				Array = array[i].split("=", limit);
