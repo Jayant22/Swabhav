@@ -1,4 +1,4 @@
-package com.techlab.demo;
+package com.techlab.week1.Assignment1;
 
 public class SubstringTest {
 
@@ -36,15 +36,20 @@ public class SubstringTest {
 		
 		if (subStrCom != null && subStrName != null) {
 			
-			System.out.println(subStrCom.toUpperCase());
-			System.out.println(subStrName);
-			
+			System.out.println("Company Name::"+ subStrCom);
+			System.out.println("Developer Name::"+ subStrName);
 		}
 		else if (subStrCom != null && subStrName == null) {
-			System.out.println(subStrCom);
+			System.out.println("Company Name::"+ subStrCom);
+			System.out.println("Developer Name::"+ null);
+		}
+		else if (subStrCom == null && subStrName != null){
+			System.out.println("Company Name::"+ null);
+			System.out.println("Developer Name::"+ subStrName);
 		}
 		else {
-			System.out.println(subStrName);
+			System.out.println("Company Name::"+ null);
+			System.out.println("Developer Name::"+ null);
 		}
 		
 	}

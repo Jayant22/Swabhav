@@ -1,4 +1,4 @@
-package assignment_2;
+package com.techlab.week1.Assignment2;
 
 public class StringImmutabilityTest {
 	
@@ -10,3 +10,7 @@ public class StringImmutabilityTest {
         System.out.println("s1 refers to " + s1); 
       }
 }
+/* is it posible to modify an value of str obj ?
+ * how we are achiving immutability in str class?
+ * can we change/modify an value of normal obj?
+ * */

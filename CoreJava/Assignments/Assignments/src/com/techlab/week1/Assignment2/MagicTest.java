@@ -1,4 +1,4 @@
-package assignment_2;
+package com.techlab.week1.Assignment2;
 
 public class MagicTest {
 
@@ -20,7 +20,7 @@ public class MagicTest {
 	
 	public static void main(String args[]) 
 	   { 
-	       int n = 23142341; 
+	       int n = 1234; 
 	       if (isMagic(n)) 
 	          System.out.println("Magic Number"); 
 	           

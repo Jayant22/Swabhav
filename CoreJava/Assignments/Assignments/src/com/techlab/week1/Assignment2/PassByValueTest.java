@@ -1,4 +1,4 @@
-package assignment_2;
+package com.techlab.week1.Assignment2;
 
 class Balloon {
 
