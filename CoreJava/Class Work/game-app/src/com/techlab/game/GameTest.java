@@ -4,11 +4,13 @@ import java.util.Scanner;
 
 public class GameTest {
 
+	private static Scanner scan;
+
 	public static void main(String[] args) {
 
 		int upper = 10,lower = 0;
 		int rand = (int) (Math.random() * (upper - lower)) + lower;
-		Scanner scan = new Scanner(System.in);
+		scan = new Scanner(System.in);
 		
 		int userInput = 0;
 		while(true) {
