@@ -36,7 +36,7 @@ public class LogFileTest {
 			flag = "INFO";
 			fetchFileData(flag);
 		}
-		else if (args[0].equals("i")) {
+		else if (args[0].equals("w")) {
 			flag = "WARNING";
 			fetchFileData(flag);
 		}
