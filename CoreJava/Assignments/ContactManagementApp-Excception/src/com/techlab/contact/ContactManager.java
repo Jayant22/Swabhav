@@ -38,7 +38,9 @@ public class ContactManager extends Contact {
 		if (contactPosition != -1) {
 			contactList.get(contactPosition).setFirstName(newName);
 			addToContacts(contactList);
-
+		}
+		else {
+			throw new ContactNotFoundException();
 		}
 
 		in.close();
@@ -56,7 +58,9 @@ public class ContactManager extends Contact {
 
 		if (contactPosition != -1) {
 			dummyList.add(contactList.get(contactPosition));
-
+		}
+		else {
+			throw new ContactNotFoundException();
 		}
 
 		in.close();
@@ -75,10 +79,13 @@ public class ContactManager extends Contact {
 		if (contactPosition != -1) {
 			contactList.remove(contactPosition);
 			addToContacts(contactList);
-
+		}
+		else {
+			throw new ContactNotFoundException();
 		}
 
 		in.close();
+
 	}
 
 	@SuppressWarnings("unchecked")
@@ -92,7 +99,10 @@ public class ContactManager extends Contact {
 
 		in.close();
 
-		return contact;
+		if(contact.isEmpty())
+			throw new ContactListIsEmpty();
+		else
+			return contact;
 	}
 
 	public ObjectInputStream deserializeContactsList() throws Exception {

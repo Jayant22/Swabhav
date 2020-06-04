@@ -3,9 +3,11 @@ package com.techlab.contact.test;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import com.techlab.contact.ContactListIsEmpty;
 import com.techlab.contact.ContactManager;
+import com.techlab.contact.ContactNotFoundException;
 
-public class ContactTest {
+public class ContactExceptionTest {
 
 	static Scanner scan = new Scanner(System.in);
 	static ContactManager contact = new ContactManager();
@@ -84,28 +86,42 @@ public class ContactTest {
 		String modifyName = scan.next();
 		System.out.print("Enter new name: ");
 		String newName = scan.next();
-		contact.modifyContactByName(modifyName, newName);
+		try {
+			contact.modifyContactByName(modifyName, newName);
+		}catch(ContactNotFoundException e){
+			System.out.println(e.getMessage());
+		}
+		
 	}
 
 	public static void searchContact() throws Exception {
 		System.out.print("Enter name to be searched: ");
 		String searchContact = scan.next();
-		contactList = contact.searchContactByName(searchContact);
-				printContactInfo(contactList);	
+		try {
+			contactList = contact.searchContactByName(searchContact);
+			printContactInfo(contactList);	
+		}catch(ContactNotFoundException e){
+			System.out.println(e.getMessage());
+		}
+		
 	}
 
 	private static void deleteContact() throws Exception {
 		System.out.print("Enter name to be deleted: ");
 		String deleteContact = scan.next();
-		contact.deleteContactByName(deleteContact);
+		try {
+			contact.deleteContactByName(deleteContact);
+		}catch(ContactNotFoundException e){
+			System.out.println(e.getMessage());
+		}
 	}
 	
-	public static void displayContact() {
+	public static void displayContact() throws Exception {
 		try {
 			contactList = ContactManager.displayContactList();
 			printContactInfo(contactList);
-		} catch (Exception e) {
-			System.out.println("Exception: " + e);
+		} catch (ContactListIsEmpty e) {
+			System.out.println(e.getMessage());
 		}
 	}
 
