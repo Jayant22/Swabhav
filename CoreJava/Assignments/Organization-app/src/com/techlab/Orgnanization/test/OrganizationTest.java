@@ -10,33 +10,33 @@ public class OrganizationTest {
 
 		ArrayList<Partner> partner = new ArrayList<Partner>();
 		
-		Talent t1 = new Talent(101, "sam", 7.54, "Nexsales");
-		Talent t2 = new Talent(102, "ben", 8.02, "AurionPro");
-		Talent t3 = new Talent(103, "ram", 7.23, "Nexsales");
-		Talent t4 = new Talent(104, "tom", 8.44, "Swabhav");
-		Talent t5 = new Talent(105, "jon", 7.02, "AurionPro");
+		Talent Talent1 = new Talent(101, "Jay", 7.54, "AurionPro");
+		Talent Talent2 = new Talent(102, "Sai", 8.02, "Nexsales");
+		Talent Talent3 = new Talent(103, "Ram", 7.23, "AurionPro");
+		Talent Talent4 = new Talent(104, "Tom", 8.44, "Swabhav");
+		Talent Talent5 = new Talent(105, "abc", 7.02, "Nexsales");
 		
-		Partner p1 = new Partner(1501, "AurionPro", 1000000.32, 120);
-		Partner p2 = new Partner(1502, "Nexsales", 1200000.32, 150);
+		Partner Partner1 = new Partner(1501, "AurionPro", 1000000.32, 120);
+		Partner Partner2 = new Partner(1502, "Nexsales", 1200000.32, 150);
 		
-		p1.addTalent(t2);
-		p1.addTalent(t5);
+		Partner1.addTalent(Talent1);
+		Partner1.addTalent(Talent3);
 		
-		p2.addTalent(t1);
-		p2.addTalent(t3);
+		Partner2.addTalent(Talent2);
+		Partner2.addTalent(Talent5);
 		
-		partner.add(p1);
-		partner.add(p2);
+		partner.add(Partner1);
+		partner.add(Partner2);
 		
-		Organization o = new Organization(2011, "Swabhav", "01/07/2019", partner);
-		o.addTalent(t4);
+		Organization organization = new Organization(2011, "Swabhav", "01/07/2019", partner);
+		organization.addTalent(Talent4);
 		
-		printOrganizationDetails(o);
+		printOrganizationDetails(organization);
 	
 	}
 
-	public static void printOrganizationDetails(Organization o) {
-		System.out.println(o);
+	public static void printOrganizationDetails(Organization organization) {
+		System.out.println(organization);
 	}
 	
 }
