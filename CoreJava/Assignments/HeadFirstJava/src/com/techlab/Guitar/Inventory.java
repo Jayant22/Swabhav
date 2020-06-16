@@ -12,13 +12,10 @@ public class Inventory {
 		guitars = new LinkedList();
 	}
 
-	public void addGuitar(String serialNumber, double price, 
-			Builder builder, String model, 
-			Type type, Wood backWood, Wood topWood, int numStrings) {
-		
-		Guitar guitar = new Guitar(serialNumber, price, new GuitarSpecs(builder, model, type, backWood, topWood, numStrings));
+	public void addGuitar(Guitar guitar) {
+
 		guitars.add(guitar);
-		
+
 	}
 
 	public Guitar getGuitar(String serialNumber) {

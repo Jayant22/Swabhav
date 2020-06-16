@@ -12,8 +12,8 @@ public class GuitarTest {
 
 		Inventory inventory = new Inventory();
 
-		inventory.addGuitar("XYZ101", 1203.42, Builder.FENDER, "Stratocastor", Type.ELECTRIC, Wood.ALDER, Wood.ALDER,
-				12);
+		Guitar guitars = new Guitar("XYZ101", 1203.42, new GuitarSpecs(Builder.FENDER, "Stratocastor", Type.ELECTRIC, Wood.ALDER, Wood.ALDER,12));
+		inventory.addGuitar(guitars);
 
 		GuitarSpecs sam = new GuitarSpecs(Builder.FENDER, "Stratocastor", Type.ELECTRIC, Wood.ALDER, Wood.ALDER,
 				12);

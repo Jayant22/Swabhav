@@ -14,6 +14,10 @@ public class Customer implements Serializable {
 	private final static String FILENAME = "src/resource/ShoppingCart.txt";
 	
 	
+	public Customer() {
+		super();
+	}
+
 	public Customer(int customerId, String customerName, String purchaseDate, String customerAddress ) throws Exception {
 		
 		this.customerId = customerId;
@@ -24,7 +28,7 @@ public class Customer implements Serializable {
 	
 	private Date setDate(String purchaseDate) throws Exception {
 
-		SimpleDateFormat s = new SimpleDateFormat("dd/MM/yyyy");
+		SimpleDateFormat s = new SimpleDateFormat("dd-MM-yyyy");
 		Date date = s.parse(purchaseDate);
 		return date;
 	}
