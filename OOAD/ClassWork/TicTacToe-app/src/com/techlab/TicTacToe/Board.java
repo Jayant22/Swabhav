@@ -48,12 +48,21 @@ public class Board {
 		}
 		System.out.println(currPlayer.getName() + " Turn now");
 	}
-	
+
 	public void move(Game game, int xPosition, int yPosition) {
-		if (!cell.isValidMove(this,xPosition, yPosition))
-			game.playMove(game.currPlayer);
+		try {
+			if (!cell.cheakOutOfCell(this, xPosition, yPosition)) {
+				throw new OutOfCellException(game);
+			}
+			if (!cell.cheakCellAlreadyOccupied(this, xPosition, yPosition)) {
+				throw new CellAlreadyOccupiedException(game);
+			}
+
+		} catch (CellAlreadyOccupiedException e) {
+		} catch (OutOfCellException e) {
+		}
 		board[xPosition][yPosition] = game.currPlayer.getMark().toString();
-		cell.changePlayer(game,this);
+		cell.changePlayer(game, this);
 		printBoard(game.currPlayer);
 		if (!game.isGameOver()) {
 			game.playMove(game.currPlayer);

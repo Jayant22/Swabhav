@@ -29,12 +29,13 @@ public class Game {
 	}
 
 	public void playMove(Player currPlayer) {
+
 		System.out.println("Enter your x,y positions -> ");
 		Scanner scanner = new Scanner(System.in);
 		int input1 = scanner.nextInt();
 		int input2 = scanner.nextInt();
-		//String[] moves = input.split(",");
-		board1.move(this, input1-1,input2-1);
+
+		board1.move(this, input1 - 1, input2 - 1);
 
 	}
 
