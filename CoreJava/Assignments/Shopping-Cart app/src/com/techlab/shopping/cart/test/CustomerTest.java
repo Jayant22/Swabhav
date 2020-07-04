@@ -14,6 +14,7 @@ import com.techlab.shopping.cart.Product;
 
 class CustomerTest {
 
+	@SuppressWarnings("deprecation")
 	@Test
 	void testCustomerConstructor() throws Exception {
 		// Arrange
@@ -95,7 +96,6 @@ class CustomerTest {
 			assertEquals(expectedPurchaseDate, cust.getPurchaseDate());
 			assertEquals(expectedCustomerAddress, cust.getCustomerAddress());
 
-			System.out.println("Your products\n");
 			for (Product p : prod) {
 				assertEquals(expectedProductID, p.getProductID());
 				assertEquals(expectedProductName, p.getProductName());
