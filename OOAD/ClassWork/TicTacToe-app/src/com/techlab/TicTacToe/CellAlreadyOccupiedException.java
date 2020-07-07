@@ -1,10 +1,12 @@
 package com.techlab.TicTacToe;
 
+import com.techlab.TicTacToe.test.MainTest;
+
 public class CellAlreadyOccupiedException extends Exception {
 
-	public CellAlreadyOccupiedException(Game game) {
+	public CellAlreadyOccupiedException(MainTest test, Game game) {
 		System.out.println("Cell is already occupied!!!!!!!!");
-		game.playMove(game.currPlayer);
+		MainTest.playMove(test, game, game.currPlayer);
 				
 	}
 }

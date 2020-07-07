@@ -10,6 +10,7 @@ public class Cell {
 
 		if (xPosition >= boardlist.SIZE || yPosition >= boardlist.SIZE || xPosition < 0 || yPosition < 0)
 			return false;
+
 		return true;
 	}
 

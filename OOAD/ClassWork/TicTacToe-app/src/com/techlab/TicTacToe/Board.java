@@ -1,13 +1,16 @@
 package com.techlab.TicTacToe;
 
+import com.techlab.TicTacToe.test.MainTest;
+
 public class Board {
 
 	public String[][] board;
 	public final String FILLER = " ";
-	public final int SIZE = 3;
+	public int SIZE;
 	public Cell cell;
 
-	public Board() {
+	public Board(int size) {
+		this.SIZE = size;
 		board = new String[SIZE][SIZE];
 		cell = new Cell();
 		clearBoard();
@@ -15,6 +18,20 @@ public class Board {
 
 	public String[][] getBoard() {
 		return board;
+	}
+
+	public boolean isBoardEmpty() {
+		int flag = 0;
+		for (int i = 0; i < SIZE; i++) {
+			for (int j = 0; j < SIZE; j++) {
+				if (board[i][j] == FILLER)
+					flag = 1;
+			}
+		}
+		if (flag == 1)
+			return true;
+		else
+			return false;
 	}
 
 	private void clearBoard() {
@@ -49,13 +66,13 @@ public class Board {
 		System.out.println(currPlayer.getName() + " Turn now");
 	}
 
-	public void move(Game game, int xPosition, int yPosition) {
+	public void move(MainTest test, Game game, int xPosition, int yPosition) {
 		try {
 			if (!cell.cheakOutOfCell(this, xPosition, yPosition)) {
-				throw new OutOfCellException(game);
+				throw new OutOfCellException(test, game);
 			}
 			if (!cell.cheakCellAlreadyOccupied(this, xPosition, yPosition)) {
-				throw new CellAlreadyOccupiedException(game);
+				throw new CellAlreadyOccupiedException(test, game);
 			}
 
 		} catch (CellAlreadyOccupiedException e) {
@@ -65,8 +82,18 @@ public class Board {
 		cell.changePlayer(game, this);
 		printBoard(game.currPlayer);
 		if (!game.isGameOver()) {
-			game.playMove(game.currPlayer);
+			MainTest.playMove(test, game, game.currPlayer);
 		}
 	}
 
+	public boolean isNoMovesLeft() {
+		for (int i = 0; i < SIZE; i++) {
+			for (int j = 0; j < SIZE; j++) {
+				if (board[i][j].equals(FILLER)) {
+					return false;
+				}
+			}
+		}
+		return true;
+	}
 }

@@ -1,9 +1,11 @@
 package com.techlab.TicTacToe;
 
+import com.techlab.TicTacToe.test.MainTest;
+
 public class OutOfCellException extends Exception {
 
-	public OutOfCellException(Game game) {
+	public OutOfCellException(MainTest test, Game game) {
 		System.out.println("Positions exceeds the Cell Limit!!!!!!!!.");
-		game.playMove(game.currPlayer);
+		MainTest.playMove(test, game, game.currPlayer);
 	}
 }
