@@ -1,5 +1,6 @@
 package com.techlab.TicTacToe;
 
+import com.techlab.TicTacToe.GameFacade;
 import com.techlab.TicTacToe.test.MainTest;
 
 public class Board {
@@ -66,23 +67,23 @@ public class Board {
 		System.out.println(currPlayer.getName() + " Turn now");
 	}
 
-	public void move(MainTest test, Game game, int xPosition, int yPosition) {
+	public void move(MainTest test, GameFacade gameFacade, int xPosition, int yPosition) {
 		try {
 			if (!cell.cheakOutOfCell(this, xPosition, yPosition)) {
-				throw new OutOfCellException(test, game);
+				throw new OutOfCellException(test, gameFacade);
 			}
 			if (!cell.cheakCellAlreadyOccupied(this, xPosition, yPosition)) {
-				throw new CellAlreadyOccupiedException(test, game);
+				throw new CellAlreadyOccupiedException(test, gameFacade);
 			}
 
 		} catch (CellAlreadyOccupiedException e) {
 		} catch (OutOfCellException e) {
 		}
-		board[xPosition][yPosition] = game.currPlayer.getMark().toString();
-		cell.changePlayer(game, this);
-		printBoard(game.currPlayer);
-		if (!game.isGameOver()) {
-			MainTest.playMove(test, game, game.currPlayer);
+		board[xPosition][yPosition] = gameFacade.getGame().currPlayer.getMark().toString();
+		cell.changePlayer(gameFacade.getGame(), this);
+		printBoard(gameFacade.getGame().currPlayer);
+		if (!gameFacade.getGame().isGameOver()) {
+			test.playMove(test, gameFacade, gameFacade.getGame().currPlayer);
 		}
 	}
 
