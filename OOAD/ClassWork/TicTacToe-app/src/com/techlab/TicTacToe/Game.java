@@ -22,7 +22,7 @@ public class Game {
 	}
 
 	public void start() {
-		board.printBoard(this.getCurrPlayer());
+		//board.printBoard(this.getCurrPlayer());
 	}
 
 	public boolean isGameOver() {

@@ -44,8 +44,8 @@ public class GameFacade {
 	public Player getCurrPlayer() {
 		return currPlayer;
 	}
-	
-	public void passToMove(MainTest test,GameFacade gameFacade, Player currPlayer,int input1, int input2) {
+
+	public void passToMove(MainTest test, GameFacade gameFacade, Player currPlayer, int input1, int input2) {
 		board.move(test, gameFacade, input1 - 1, input2 - 1);
 	}
 

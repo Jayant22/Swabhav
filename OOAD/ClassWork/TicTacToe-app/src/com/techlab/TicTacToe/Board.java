@@ -43,29 +43,16 @@ public class Board {
 		}
 	}
 
-	public void printBoard(Player currPlayer) {
-		String header = "  ";
-		for (int j = 0; j < SIZE; j++) {
-			header += "|" + (j + 1);
-		}
-		System.out.println(header);
-		for (int j = 0; j < SIZE * 3; j++) {
-			System.out.print("_");
-		}
-		System.out.println();
-		for (int i = 0; i < SIZE; i++) {
-			String row = (i + 1) + " ";
-			for (int j = 0; j < SIZE; j++) {
-				row += "|" + board[i][j];
-			}
-			System.out.println(row);
-			for (int j = 0; j < SIZE * 3; j++) {
-				System.out.print("_");
-			}
-			System.out.println();
-		}
-		System.out.println(currPlayer.getName() + " Turn now");
-	}
+	/*
+	 * public void printBoard(Player currPlayer) { String header = "  "; for (int j
+	 * = 0; j < SIZE; j++) { header += "|" + (j + 1); } System.out.println(header);
+	 * for (int j = 0; j < SIZE * 3; j++) { System.out.print("_"); }
+	 * System.out.println(); for (int i = 0; i < SIZE; i++) { String row = (i + 1) +
+	 * " "; for (int j = 0; j < SIZE; j++) { row += "|" + board[i][j]; }
+	 * System.out.println(row); for (int j = 0; j < SIZE * 3; j++) {
+	 * System.out.print("_"); } System.out.println(); }
+	 * System.out.println(currPlayer.getName() + " Turn now"); }
+	 */
 
 	public void move(MainTest test, GameFacade gameFacade, int xPosition, int yPosition) {
 		try {
@@ -81,7 +68,7 @@ public class Board {
 		}
 		board[xPosition][yPosition] = gameFacade.getGame().currPlayer.getMark().toString();
 		cell.changePlayer(gameFacade.getGame(), this);
-		printBoard(gameFacade.getGame().currPlayer);
+		//printBoard(gameFacade.getGame().currPlayer);
 		if (!gameFacade.getGame().isGameOver()) {
 			test.playMove(test, gameFacade, gameFacade.getGame().currPlayer);
 		}
