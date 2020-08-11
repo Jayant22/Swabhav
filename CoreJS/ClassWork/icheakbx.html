@@ -1,0 +1,22 @@
+<html>
+<body>
+<label for="myCheck">Checkbox:</label> 
+<input type="checkbox" id="myCheck" onclick="myFunction()">
+
+<div id = "loader" style="display:none"><img id = "myImage" src = "Images/Loader2.gif"></div><br>
+
+<script>
+
+function myFunction() {
+  var checkBox = document.getElementById("myCheck");
+  var loader = document.getElementById("loader");
+  if (checkBox.checked == true){
+    loader.style.display = "block";
+  } else {
+    loader.style.display = "none";
+  }
+}
+</script>
+
+</body>
+</html>

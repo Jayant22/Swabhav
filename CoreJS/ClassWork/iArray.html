@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Events</title>
+    <script>
+        var fruits = ["Banana", "Orange", "Apple", "Mango"];
+        function displayItems(){
+			console.log(fruits);
+		}
+        function insertNewArrayElement() {
+            var element = document.getElementById("newArrayElement").value;
+            fruits.push(element);
+            console.log(fruits);
+        }
+
+        function deleteArrayElement() {
+            fruits.pop();
+            console.log(fruits);  
+        }
+        function updateArrayElement(){
+            var oddEle = document.getElementById("updateArrayElement1").value;
+            var newEle = document.getElementById("updateArrayElement2").value;
+
+            for( var i = 0; i < fruits.length; i++){ 
+                if ( fruits[i] === oddEle) 
+                { 
+                    fruits.splice(i, 1 , newEle) 
+                }
+            }
+            console.log(fruits); 
+        }
+    </script>
+</head>
+<body class="body">
+    <div class="field">
+        Enter New Array Element: <input type="text" id="newArrayElement" name="Insert"
+        value="" />
+        <button id="insert" onclick="insertNewArrayElement()">Insert</button>
+        </div>
+
+    <div class="field">
+        Enter Array Element to Delete: <input type="text" id="deleteArrayElement" name="Delete"
+        value="" />
+        <button id="delete" onclick="deleteArrayElement()">Delete</button>
+        </div>
+
+    <div class="field">
+        Enter Array Element to Update: <input type="text" id="updateArrayElement1" name="Odd Value"
+        value="" />
+        Enter Array Element to Update: <input type="text" id="updateArrayElement2" name="New Value"
+        value="" />
+        <button id="update" onclick="updateArrayElement()">Update</button>
+        </div>    
+
+    <div class="buttons">
+        <button id="display" onclick="displayItems();">Display</button>
+    </div>
+
+</body>
+</html>

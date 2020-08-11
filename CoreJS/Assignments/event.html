@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Events</title>
+    <script>
+        function changeBackgroundColor(buttonID) {
+            console.log(buttonID);
+            if (buttonID == 'red') {
+                document.getElementById('red').style.backgroundColor = 'red';
+                document.body.style.backgroundColor = 'red';
+            }
+            else if (buttonID == 'blue'){
+                document.getElementById('blue').style.backgroundColor = 'blue';
+                document.body.style.backgroundColor = 'blue';
+            }
+        }
+
+        function hello(){
+            alert("hello");
+        }
+    </script>
+</head>
+<body class="body">
+    <div class="buttons">
+        <button id="red" onclick="changeBackgroundColor(this.id)">Red</button>
+        <button id="blue" onclick="changeBackgroundColor(this.id)">Blue</button>
+    </div>
+
+</body>
+</html>

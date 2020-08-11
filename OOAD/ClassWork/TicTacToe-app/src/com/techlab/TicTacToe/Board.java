@@ -5,16 +5,28 @@ import com.techlab.TicTacToe.test.MainTest;
 
 public class Board {
 
-	public String[][] board;
-	public final String FILLER = " ";
-	public int SIZE;
-	public Cell cell;
+	private String[][] board;
+	private final String FILLER = " ";
+	private int SIZE;
+	private Cell cell;
 
 	public Board(int size) {
 		this.SIZE = size;
 		board = new String[SIZE][SIZE];
 		cell = new Cell();
 		clearBoard();
+	}
+
+	public String getFILLER() {
+		return FILLER;
+	}
+
+	public int getSIZE() {
+		return SIZE;
+	}
+
+	public Cell getCell() {
+		return cell;
 	}
 
 	public String[][] getBoard() {
@@ -43,35 +55,22 @@ public class Board {
 		}
 	}
 
-	/*
-	 * public void printBoard(Player currPlayer) { String header = "  "; for (int j
-	 * = 0; j < SIZE; j++) { header += "|" + (j + 1); } System.out.println(header);
-	 * for (int j = 0; j < SIZE * 3; j++) { System.out.print("_"); }
-	 * System.out.println(); for (int i = 0; i < SIZE; i++) { String row = (i + 1) +
-	 * " "; for (int j = 0; j < SIZE; j++) { row += "|" + board[i][j]; }
-	 * System.out.println(row); for (int j = 0; j < SIZE * 3; j++) {
-	 * System.out.print("_"); } System.out.println(); }
-	 * System.out.println(currPlayer.getName() + " Turn now"); }
-	 */
-
-	public void move(MainTest test, GameFacade gameFacade, int xPosition, int yPosition) {
-		try {
-			if (!cell.cheakOutOfCell(this, xPosition, yPosition)) {
-				throw new OutOfCellException(test, gameFacade);
-			}
-			if (!cell.cheakCellAlreadyOccupied(this, xPosition, yPosition)) {
-				throw new CellAlreadyOccupiedException(test, gameFacade);
-			}
-
-		} catch (CellAlreadyOccupiedException e) {
-		} catch (OutOfCellException e) {
+	public void move(MainTest test, GameFacade gameFacade, int xPosition, int yPosition)
+			throws OutOfCellException, CellAlreadyOccupiedException {
+		if (!cell.cheakOutOfCell(this, xPosition, yPosition)) {
+			throw new OutOfCellException();
 		}
-		board[xPosition][yPosition] = gameFacade.getGame().currPlayer.getMark().toString();
-		cell.changePlayer(gameFacade.getGame(), this);
-		//printBoard(gameFacade.getGame().currPlayer);
-		if (!gameFacade.getGame().isGameOver()) {
-			test.playMove(test, gameFacade, gameFacade.getGame().currPlayer);
+		if (!cell.cheakCellAlreadyOccupied(this, xPosition, yPosition)) {
+			throw new CellAlreadyOccupiedException();
 		}
+
+		board[xPosition][yPosition] = gameFacade.getGame().getCurrPlayer().getMark().toString();
+		gameFacade.getGame().changePlayer();
+		// printBoard(gameFacade.getGame().currPlayer);
+		if (!gameFacade.getGame().isGameOver())
+			test.playMove(test, gameFacade, gameFacade.getGame().getCurrPlayer());
+		else
+			test.printBoard(gameFacade, gameFacade.getGame().getCurrPlayer());
 	}
 
 	public boolean isNoMovesLeft() {

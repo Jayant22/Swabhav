@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Red N Blue</title>
+</head>
+<body>
+    <button id="listener" value="red">RED</button>
+    <button id="listener1" value="blue">BLUE</button>
+
+    <script>
+        var btn = document.getElementById("listener");
+        var btn1 = document.getElementById("listener1");
+
+        btn.addEventListener("click",function(){
+            
+	        document.body.style.backgroundColor = "red";
+	        });
+        btn1.addEventListener("click",function(){
+            document.body.style.backgroundColor = "blue";});
+            
+    </script>
+</body>
+</html>

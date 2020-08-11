@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Module Pattern</title>
+</head>
+<body>
+    <script>
+        var module1 = (function () {
+            //private 
+            let color = 'red';
+            let model;
+            function setModel(m) {
+                model = m;
+            }
+            let privatePrice = 800;
+            let getModel = function (m) {
+            setModel(m);
+            return model;
+        }
+        // public 
+        return {
+            price: privatePrice,
+            model: getModel
+        }
+        }());
+        console.log(module1.price); // 800 
+        console.log(module1.model('audi')); // audi
+        console.log(module1.)
+    </script>
+</body>
+</html>

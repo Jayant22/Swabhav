@@ -1,0 +1,42 @@
+<!DOCTYPE html> 
+<html> 
+<head>
+    <title>
+        Range Silder
+    </title>
+</head>
+<body> 
+  
+<h1>Example of Range Slider</h1> 
+  
+<div class="rangeslider"> 
+  <input type="range" min="1" max="100" value="1"
+                  class="myslider" id="sliderRange" onchange="Silder();"> 
+  <p>Value: <atmpLeft id="value1"></atmpLeft></p> 
+</div> 
+<ul id = "child"></ul>
+<ul id = "child1"></ul>
+<script> 
+function Silder(){
+    
+    let child = document.getElementById("child");
+    let child1 = document.getElementById("child1");
+
+    var rangeslider = document.getElementById("sliderRange"); 
+    var output = document.getElementById("value1");
+    
+
+    rangeslider.oninput = function() { 
+        output.innerHTML = this.value; 
+    } 
+    for (let index = 0; index < output.innerHTML; index++) {
+        var btn = document.createElement("Button");
+        btn.innerHTML = index+1;
+        child.append(btn);    
+    } 
+    document.body.append(child);
+    
+}
+</script> 
+</body> 
+</html> 

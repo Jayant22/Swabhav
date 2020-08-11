@@ -30,6 +30,7 @@ public class Employee {
 	}
 
 	public String toString() {
-		return ("Employee :[ Name : " + name + ", dept : " + dept + ", salary :" + salary + " ]");
+		return ("Employee :[ Name : " + name + ", dept : " + dept + 
+				", salary :" + salary + " ]");
 	}
 }

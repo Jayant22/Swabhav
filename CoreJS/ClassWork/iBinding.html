@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Binding</title>
+</head>
+<body>
+    Yoyr Text : <input type="text" id="name" size="20" name="name"><br><br>
+    Font-Size: <input type="number" id="fontSize" size="20" name="fontSize"><br><br>
+    Background-Color: <input type="text" id="back" size="20" name="back"><br><br>
+    Foreground-Color: <input type="text" id="fore" size="20" name="back"><br><br>
+    <button id="btn" onclick="start();">Submit</button>
+
+<script>
+    function start(){
+        let para = document.createElement('p');
+        
+        var databind = {
+            name: document.getElementById("name").value,
+            font: document.getElementById("fontSize").value,
+            back: document.getElementById("back").value,
+            fore: document.getElementById("fore").value,
+        
+           Binding: function(){
+               var adjfont = this.font.toString() + "px";
+                para.innerHTML = this.name;
+                para.style.fontSize = adjfont;
+                para.style.backgroundColor = this.back;
+                para.style.color = this.fore;
+                document.body.appendChild(para);
+            }
+        }
+        var printFunc= databind.Binding.bind(databind); 
+        printFunc(); 
+    }
+</script>
+</body>
+</html>

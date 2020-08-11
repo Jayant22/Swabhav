@@ -1,0 +1,34 @@
+<html>
+<head>
+</head>
+<body>
+	<script>
+		/*function async(callback) {
+    		setTimeout(function() {
+			getData();
+        	callback();
+    		}, 0);
+		}*/	
+		function async(fn, callback) {
+    		setTimeout(function() {
+        	fn();
+        	callback();
+    		}, 0);
+		}
+		function sync(fn) {
+    		fn();
+		}
+		var result = async(function getData() {
+			var d = Math.floor(Math.random()*10)
+			if(d>5){
+				return {data:d}
+			}
+			else{
+				return {msg:"Error! No. is less than 5"}
+			}
+		});
+		console.log(result)
+		console.log("End of Script!")
+	</script>
+</body>
+</html>

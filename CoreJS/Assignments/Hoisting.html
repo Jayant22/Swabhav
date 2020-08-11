@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Hoisting</title>
+</head>
+<body>
+    <script>
+    var i = 1; 
+    document.write(i + ", " + j + "<br>"); 
+    var j = 2; 
+    
+    var x = 5; 
+    var y; 
+    document.write(x + ", " + y + "<br>"); 
+    y = 10; 
+    
+    var a = 3; 
+    b = 6;
+    document.write(a + ", " + b + "<br>"); 
+    var b; 
+    
+    var u = 4; 
+    document.write(u + ", " + v); 
+    var v; 
+    v = 8; 
+    </script>
+</body>
+</html>

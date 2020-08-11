@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Constructor Pattern</title>
+    </head>    
+<body>
+
+<h2>JavaScript Object Constructors</h2>
+
+<p id="demo"></p>
+
+<script>
+// Constructor function for Person objects
+function Person(firstName, lastName) {
+  this.firstName = firstName;
+  this.lastName = lastName;
+
+  return{
+    getFirstName: function(){
+      return firstName;
+    },
+    getLastName: function(){
+      return lastName;
+    }
+  }
+}
+// Create a Person object
+var myFather = new Person("John", "Doe");
+
+// Display Name
+console.log(myFather.getFirstName());
+//console.log(lastName); // Uncaught ReferenceError: lastName is not defined
+console.log(this.lastName); // undefined
+console.log(myFather.getLastName()); // undefined
+//console.log(person1.setFirstName("ram")); // undefined
+</script>
+
+</body>
+</html>

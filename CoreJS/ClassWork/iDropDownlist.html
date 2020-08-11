@@ -1,0 +1,26 @@
+<html>
+<head>
+<script type="text/javascript">
+function changeColor() {
+var eID = document.getElementById("colors");
+var colorVal = eID.options[eID.selectedIndex].value;
+document.getElementById('color').style.background=colorVal;
+document.body.style.backgroundColor = colorVal;
+}
+</script>
+</head>
+<title>DropDownList</title>
+<body>
+<select id="colors" >
+  <option value="#FF0000">Red</option>
+  <option value="#0000FF">Blue</option>
+  <option value="#008000" >Green</option>
+  <option value="#FFFF00">Yellow</option>
+  <option value="#FFC300">Orange</option>
+  <option value="#FFFFFF" selected="selected">White</option>
+</select>
+<br><br>
+<button  id="color" onclick="changeColor()">Change Color</button>
+</div>
+</body>
+</html>

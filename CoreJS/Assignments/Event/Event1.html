@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Print Message</title>
+</head>
+<body>
+    <button id="listener">printMessage</button>
+    <p id="demo"></p>
+    <script>
+        var x = document.getElementById("listener");
+        x.addEventListener("click", printHello);
+        x.addEventListener("click", printBye);
+
+    function printHello() {
+        document.getElementById("demo").innerHTML += "HELLO Everyone!<br>"
+    }
+
+    function printBye() {
+        document.getElementById("demo").innerHTML += "BYE Evertone!<br>"
+    }
+    </script>
+</body>
+</html>
