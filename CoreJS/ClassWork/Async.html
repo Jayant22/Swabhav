@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Web Workers Example</title>
+
+    <style type="text/css">
+    body {padding-top:28px;}
+    .output-cont {margin-left:12%; margin-top:28px;}
+
+    .output-cont h3 {width:200px; height:100%;}
+    .output-cont button {padding:4px 8px; font-size:1.1rem; font-family:sans-serif;  }
+    </style>
+</head>
+
+<body>
+
+<div class="output-cont">
+    <button onclick="testWorker()">Worker</button>
+    <h3 id="workerOutput"></h3>
+    <button onclick="terminateWorker()">terminate worker</button>
+</div>
+<br/>
+<div class="output-cont">
+    <button onclick="alert('Helloooooo!')">Helloooo</button>
+</div>
+  <script>
+    var worker;
+    function testWorker() {
+        if (typeof(Worker) !== "undefined") {
+            if (typeof(worker) == "undefined") {
+                worker = new Worker("Async.js");
+            }
+            worker.onmessage = function(event) {
+                document.getElementById("workerOutput").innerHTML = event.data;
+            };
+        } else {
+            document.getElementById("workerOutput").innerHTML = "Web Workers are not supported in your browser";
+        }
+    }
+    function terminateWorker() { 
+        console.log("Worker Terminated!!!!!!");
+        worker.terminate();
+        worker = undefined;
+    }
+  </script>
+</body>
+</html>

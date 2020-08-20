@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="../jquery-3.5.1.min.js"></script>
+    <title>Hello</title>
+</head>
+<body>
+    Name : <input type="text" id="name" size="20" name="name"><br><br>
+    <button id="btn">Submit</button>
+    <p id="p1" style="display:none">Hello</p>
+
+    <script>
+        $(document).ready(function() {
+            $("button").bind("click",function() {
+                $('p').append(" "+ $("#name").val());
+   
+                $('p').css('background-color', 'lightblue');
+                $('p').css('color', 'red');
+                $('p').css('font-size', 'large');
+    
+                $('p').animate({fontSize: "3em"});
+                $('p').animate({fontSize: "2em"});
+
+                $("p").show();
+            });                 
+        });
+    </script>
+</body>
+</html>

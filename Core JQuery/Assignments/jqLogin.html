@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+form label {
+  display: inline-block;
+  width: 100px;
+}
+
+form div {
+  margin-bottom: 10px;
+}
+
+.error {
+  color: red;
+  margin-left: 5px;
+}
+
+label.error {
+  display: inline;
+}
+</style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script src="../jquery-3.5.1.min.js"></script>
+<title>Login</title>
+</head>
+<body>
+    <h2>Login</h2>
+    <form id="first_form" method="post" action="">
+      <div>
+        <label for="user_name">UserName:</label>
+        <input type="text" id="user_name" name="user_name"></input><br><br>
+      </div>
+      <div>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password"></input><br><br>
+      </div>
+      <div>
+        <input type="submit" value="Submit" />
+      </div>
+    </form>
+    <script>
+        $(document).ready(function() {
+        
+        $('#first_form').submit(function(e) {
+          e.preventDefault();
+          var user_name = $('#user_name').val();
+          var password = $('#password').val();
+        
+          $(".error").remove();
+        
+          if (user_name.length < 1) {
+            $('#user_name').after('<br><span class="error">This field is required</span>');
+          }
+          if (password.length < 8) {
+            $('#password').after('<br><span class="error">Password must be at least 8 characters long</span>');
+          }
+        });
+        
+        });
+        </script>
+</body>

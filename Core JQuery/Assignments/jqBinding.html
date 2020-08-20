@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        p {
+            display: none;
+        }
+    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <title>Binding</title>
+</head>
+<body>
+    Your Text : <input type="text" id="name" size="20" name="name"><br><br>
+    Font-Size: <input type="number" id="fontSize" size="20" name="fontSize"><br><br>
+    Background-Color: <input type="text" id="back" size="20" name="back"><br><br>
+    Foreground-Color: <input type="text" id="fore" size="20" name="back"><br><br>
+    <button id="btn">Submit</button>
+    <p></p>
+
+<script>
+    $(document).ready(function() { 
+            $("button").bind("click",function() { 
+                $("p").text($("#name").val());
+                $("p").css('font-size', $("#fontSize").val()+"px");
+                $('p').css('background-color', $("#back").val());
+                $('p').css('color', $("#fore").val()); 
+                $("p").show();
+            }); 
+        });
+</script>
+</body>
+</html>

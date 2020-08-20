@@ -1,0 +1,25 @@
+<html>
+<head>
+    <title>Loader CheakBox</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+</head>
+<body>
+<p><input type="checkbox"> Checkbox!!</p>
+
+<div id = "loader" style="display:none"><img id = "myImage" src = "Images/Loader2.gif"></div><br>
+
+<script>
+    $(document).ready(function(){
+        $('input[type="checkbox"]').click(function(){
+            if($(this).prop("checked") == true){
+                $("#loader").show();
+            }
+            else if($(this).prop("checked") == false){
+                $("#loader").hide();
+            }
+        });
+    });
+</script>
+
+</body>
+</html>

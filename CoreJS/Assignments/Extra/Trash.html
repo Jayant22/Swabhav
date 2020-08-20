@@ -1,0 +1,31 @@
+<html>
+<head>
+</head>
+<body>
+   <div id = "resultDiv"></div>
+   <script>
+       (function(){
+            function student(fname, lname){
+                this.fname = fname;
+                this.lname = lname;
+                this.getFullName = function (){
+                    return this.fname + " " + this.lname
+                }
+            }
+            console.log( new student("Rajendra", "prasad").getFullName());
+        })();
+        (function(){
+            function student(fname, mname, lname){
+                this.fname = fname;
+                this.mname = mname;
+                this.lname = lname;
+                this.getFullName = function (){
+                    return this.fname + " " + this.mname + " " + this.lname;
+                }
+            }
+            console.log( new student("Rajendra", "S", "prasad").getFullName());
+        })();
+            
+   </script>
+</body>
+</html>

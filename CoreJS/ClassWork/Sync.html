@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="btn">Display Time</button>
+    <button id="btn">Hello</button>
+
+    <script>
+        for (let index = 0; index < btn.length; index++) {
+            btn[index].addEventListener('click',function(e){
+                if(e.target.innerHTML == "Display Time"){
+                    while(true){
+                        const date = new Date();
+                        console.log(date.getHours()+":"+date.getMinutes()+":"+date.getSeconds());
+                    }
+                }else{
+                    console.log('Hello');
+                }
+            });
+            
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>jQuery Callback</title>
+<script src="../jquery-3.5.1.min.js"></script>
+<style>
+    h1{
+        background:red;
+        padding:20px;
+        font-size: 24px;
+    }
+    p{
+        display:none;
+        background:yellow;
+        font-size: 24px;
+        padding:20px;
+    }
+    button{
+        background:lightgray;
+        font-size: 24px;
+        font-style: inherit;
+        padding:5px;
+    }
+</style>
+<script>
+$(document).ready(function(){
+    $("button").click(function(){
+        $("h1, p").slideToggle("slow", function(){
+            alert("Heading Is Hidden Using the CallBack Function.");
+        });
+    });   
+});
+</script>
+</head>
+<body>
+    <h1>This is heading</h1>
+    <p>This is paragraph.</p>
+    <button type="button">HIDE</button>
+</body>
+</html>                                		

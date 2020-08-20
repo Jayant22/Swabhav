@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Closure</title>
+</head>
+<body>
+    <header>
+        <h1>Example for Closure</h1>
+    </header>
+
+    <script>
+        var a = 10;
+        function addA() {
+            var b = 5;
+            console.log(`${a} + ${b} = ${a+b}`);
+
+            function closure() {
+                var x = 20;
+                console.log(`${a} + ${b} + ${x} = ${a+b+x}`);
+            }
+            closure();
+        }
+
+        addA();
+    </script>
+</body>
+</html>

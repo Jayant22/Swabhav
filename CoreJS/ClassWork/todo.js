@@ -1,3 +1,36 @@
+var todos = new Array;
+
+(function() {
+  var todos_str = localStorage.getItem('todo');
+    if (todos_str !== null) {
+        todos = JSON.parse(todos_str); 
+    }
+
+  for (let index = 0; index < todos.length; index++) {
+    var li = document.createElement("li");
+    var inputValue = todos[index];
+    var t = document.createTextNode(inputValue);
+    li.appendChild(t);
+    if (inputValue === '') {
+    alert("You must write something!");
+    }else {
+      document.getElementById("myUL").appendChild(li);
+    } 
+  }
+  
+  for (i = 0; i < close.length; i++) {
+    close[i].onclick = function(e) {
+        
+        var div = this.parentElement;
+        div.style.display = "none";
+        var str = todos[i];
+        console.log(str);
+        todos.splice(str, 1);
+        localStorage.setItem('todo', JSON.stringify(todos));  
+      }
+    }
+})();
+
 // Create a "close" button and append it to each list item
 var myNodelist = document.getElementsByTagName("LI");
 var i;
@@ -12,6 +45,7 @@ for (i = 0; i < myNodelist.length; i++) {
 // Click on a close button to hide the current list item
 var close = document.getElementsByClassName("close");
 var i;
+console.log(close);
 for (i = 0; i < close.length; i++) {
   close[i].onclick = function() {
   var div = this.parentElement;
@@ -29,6 +63,7 @@ list.addEventListener('click', function(ev) {
 
 // Create a new list item when clicking on the "Add" button
 function newElement() {
+
   var li = document.createElement("li");
   var inputValue = document.getElementById("myInput").value;
   var t = document.createTextNode(inputValue);
@@ -37,6 +72,8 @@ function newElement() {
   alert("You must write something!");
   } else {
     document.getElementById("myUL").appendChild(li);
+    todos.push(inputValue);
+    localStorage.setItem('todo', JSON.stringify(todos));
   }
   document.getElementById("myInput").value = "";
   var span = document.createElement("SPAN");
@@ -44,15 +81,16 @@ function newElement() {
   span.className = "close";
   span.appendChild(txt);
   li.appendChild(span);
+  
   for (i = 0; i < close.length; i++) {
     close[i].onclick = function(e) {
+        
         var div = this.parentElement;
         div.style.display = "none";
-        var li1 = document.createElement("li");
-        var t1 = document.createTextNode(inputValue);
-        console.log(this.value);
-        li1.appendChild(t1); 
-        document.getElementById("myULdone").appendChild(li1);  
+        var str = todos[i];
+        console.log(str);
+        todos.splice(str, 1);
+        localStorage.setItem('todo', JSON.stringify(todos));  
       }
     }
 }
