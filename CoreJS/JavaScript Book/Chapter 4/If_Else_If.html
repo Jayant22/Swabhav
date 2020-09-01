@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function sendWarning(position) {
+            if (position < 100) {
+                document.write("Do something!");
+            } else if ((position >= 100) && (position < 300)) {
+                console.log("Do something else!");
+            } else {
+                console.log("Do something even more different!");
+            }
+        }
+
+        sendWarning(500);
+        sendWarning(100);
+        sendWarning(301);
+    </script>
+</body>
+</html>

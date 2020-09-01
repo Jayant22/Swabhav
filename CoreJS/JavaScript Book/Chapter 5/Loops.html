@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    var loop = "while-loop";
+    switch (loop) {
+        case "for-loop":
+            var count = 10;
+            
+            for (var i = 0; i < count; i++) {
+                saySomethingfromFor();
+            }
+            break;
+
+        case "while-loop":
+            var count = 0;
+            while (count < 10) {
+                saySomethingFromWhile();
+                count++;
+            }
+            break;
+
+        case "do-while-loop":
+            var count = 0;
+            do {
+                count++;
+                saySomethingFromDoWhile();
+            } while (count < 10);
+            break;
+
+        default:
+            console.log("no known color specified");
+    }
+
+    function saySomethingfromFor() {
+        console.log("hello from For-Loop!");
+    }
+
+    function saySomethingFromWhile() {
+        console.log("hello from While-Loop!");
+    }
+
+    function saySomethingFromDoWhile() {
+        console.log("hello from Do-While-Loop!");
+    }
+</script>
+</body>
+</html>
