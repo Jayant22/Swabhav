@@ -8,13 +8,19 @@
 <script src="Student.js"></script>
 </head>
 <body>
-    <form>
+    <form id="add">
         <input type="number" id="id" placeholder="ID">
         <input type="text" id="name" placeholder="Name">
-        <input type="number" id="age" placeholder="Age"><br><br>
-        <input type="text" id="address" placeholder="Address">
+        <input type="number" id="age" placeholder="Age">
         <input type="text" id="gender" placeholder="Gender"><br><br>
     	<input type="button" class="add-row" value="Add Row">
+    </form>
+    <form id="update">
+        <input type="number" id="update_id" placeholder="ID">
+        <input type="text" id="update_name" placeholder="Name">
+        <input type="number" id="update_age" placeholder="Age">
+        <input type="text" id="update_gender" placeholder="Gender"><br><br>
+    	<input type="button" class="update-row" value="Update Row">
     </form>
     <table>
         <thead>
@@ -23,19 +29,12 @@
                 <th>ID</th>
                 <th>Name</th>
                 <th>Age</th>
-                <th>Address</th>
                 <th>Gender</th>
+                <th>Update</th>
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <td><input type="checkbox" name="record"></td>
-                <td>101</td>
-                <td>Peter Parker</td>
-                <td>22</td>
-                <td>Mumbai</td>
-                <td>Male</td>
-            </tr>
+
         </tbody>
     </table>
     <button type="button" class="delete-row">Delete Row</button>

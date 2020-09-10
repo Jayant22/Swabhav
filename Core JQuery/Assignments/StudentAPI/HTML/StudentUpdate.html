@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Update Form</title>
+
+    <link rel="stylesheet" href="../CSS/StudentUpdate.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+
+    <link href='https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/ui-lightness/jquery-ui.css' rel='stylesheet'> 
+    <script src= "https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    
+    <script src="../JS/StudentUpdate.js"></script>
+</head>
+<body>
+    <div  class="form">
+        <form id="contactform">
+            <br> 
+            <p class="contact"><label for="studentName">Student Name: </label></p> 
+            <input id="studentName" name="studentName" placeholder="Enter Student's Name"  tabindex="1" type="text"> 
+
+            <p class="contact"><label for="rollNo">Roll No: </label></p> 
+            <input id="rollNo" name="rollNo" placeholder="Enter Student's Roll Number" tabindex="2"  type="text"> 
+
+            <p class="contact"><label for="age">Age: </label></p> 
+            <input id="age" name="age" placeholder="Enter Student's Age"  tabindex="3" type="text"> 
+
+            <p class="contact"><label for="email">Email: </label></p> 
+            <input id="email" name="email" placeholder="example@domain.com"  tabindex="4" type="email">
+
+            <p class="student"><label for="date">Date Of Birth: </label></p> 
+            <input id="date" name="date" placeholder="Date Of Birth" tabindex="5" type="text">
+
+            <p class="student"><label for="gender">Gender: </label></p>
+            <p> 
+              <label><input type="radio" name="gender" value="Male" id="male">Male</label> 
+              <label><input type="radio" name="gender" value="Female" id="female">Female</label>
+            </p>
+
+            <button id="submit">Submit</button><br><br> 
+        </form> 
+    </div>
+</body>
+</html>

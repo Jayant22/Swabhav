@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>keyBoard Events</title>
+    </head>
+
+<body>
+
+<input type="text" id="demo">
+<p id="p1"> </p>
+<p id="p2"> </p>
+<p id="p3"> </p>
+
+<script>
+document.getElementById("demo").addEventListener("keypress", keyPress);
+function keyPress() {
+  document.getElementById("p3").innerHTML= "KeyPress";
+}
+
+document.getElementById("demo").addEventListener("keydown", keyDown);
+function keyDown() {
+    document.getElementById("p1").innerHTML = "KeyDown";
+}
+
+document.getElementById("demo").addEventListener("keyup", keyUp);
+function keyUp() {
+    document.getElementById("p2").innerHTML = "KeyUp";
+}
+</script>
+
+</body>
+</html>

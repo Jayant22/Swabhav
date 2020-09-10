@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Closure</title>
+</head>
+<body>
+    <header>
+        <h1>Example for Closure</h1>
+    </header>
+
+    <script>
+        function stopWatch() {
+            var startTime = Date.now();
+            
+            function getDelay() {
+                var elapsedTime = Date.now() - startTime;
+                console.log(elapsedTime);
+            }
+            return getDelay;
+        }
+    </script>
+</body>
+</html>

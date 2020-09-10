@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Strict Equality</title>
+</head>
+<body>
+<script>
+    function SimpleEquality(answer) {
+        if (answer == 42) {
+            console.log(true);
+            console.log("This Simple Equality Condition return True!");
+        }
+    }
+
+    function SimpleStrictEquality(answer) {
+        if (answer === 42) {
+            console.log(true);
+            console.log("This Simple Strict Equality Condition return False!");
+        }
+    }
+    SimpleEquality("42");   //42 is passed in as a string
+    SimpleStrictEquality("42"); //42 is passed in as a string
+</script>
+</body>
+</html>

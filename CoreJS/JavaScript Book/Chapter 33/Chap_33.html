@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<body onclick="myFunction(event)">
+
+<button>This is a button</button>
+
+<p id="demo"></p>
+
+<script>
+function myFunction(event) { 
+  var x = event.target;
+  document.getElementById("demo").innerHTML = "Triggered by a " + x.tagName + " element";
+}
+</script>
+
+</body>
+</html>

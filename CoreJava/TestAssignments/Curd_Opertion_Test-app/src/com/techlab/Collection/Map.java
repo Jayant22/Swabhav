@@ -4,7 +4,7 @@ import java.io.*;
 import java.util.*;
 import java.util.Map.Entry;
 
-public class HashMapTest {
+public class Map{
 
 	public static void main(String[] args) throws IOException {
 		// TODO Auto-generated method stub
@@ -21,7 +21,6 @@ public class HashMapTest {
 			System.out.println("\nHashMap Operations Demo: Building Soccer Team");
 
 			System.out.println("0 : Display players list");
-			 
             System.out.println("1 : Add player");
             System.out.println("2 : Remove player");
             System.out.println("3 : Change player");
@@ -36,9 +35,11 @@ public class HashMapTest {
 			switch (choice) {
 			case 0:
 				System.out.println("\nPlayers currently in ArrayList are ");
-				Set<Entry<Integer, String>> entries = players.entrySet();
-				for (Map.Entry<Integer, String> entry : entries)
-					System.out.println(entry.getKey() + " : " + entry.getValue());
+				Iterator<Entry<Integer, String>> entries = players.entrySet().iterator();
+				while (entries.hasNext()) {
+				    Entry<Integer, String> entry = entries.next();
+				    System.out.println(entry.getKey() + " : " + entry.getValue());
+				}
 				break;
 			case 1:
 				System.out.println("Enter player name");
@@ -63,7 +64,7 @@ public class HashMapTest {
 				return;
 			}
 
-		} while (choice < 3 && choice >= 0);
+		} while (choice < 4 && choice >= 0);
 	}
 
 }

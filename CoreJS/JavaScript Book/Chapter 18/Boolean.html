@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boolean</title>
+</head>
+<body>
+<script>
+    var bool;
+    bool = Boolean(null);
+    console.log("Null " + bool);
+
+    bool = Boolean(undefined);
+    console.log("Undefined " + bool);
+    
+    bool = Boolean();
+    console.log("No Value " + bool);
+    
+    bool = Boolean(0);
+    console.log("Number " + bool);
+    
+    bool = Boolean("");
+    console.log("Null String " + bool); 
+    
+    bool = Boolean("hello");
+    console.log("String " + bool);
+
+    bool = Boolean(new Boolean()); // Inception!!!
+    console.log("Object " + bool);
+
+    bool = Boolean(true);  // "true" is a keyword
+    console.log("Boolean True " + bool);
+    bool = Boolean("true"); // "true" is a string
+    console.log("True String " + bool);
+
+    bool = Boolean(false);  // "false" is a keyword
+    console.log("Boolean False " + bool);
+    bool = Boolean("false"); // "false" is a string
+    console.log("False String " + bool);
+</script>
+</body>
+</html>

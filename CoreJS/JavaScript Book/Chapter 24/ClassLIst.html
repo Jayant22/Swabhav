@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+.mystyle {
+  width: 500px;
+  height: 50px;
+  border: 1px solid black;
+}
+
+.anotherClass {
+  background-color: lightblue;
+  padding: 25px;
+}
+
+.thirdClass {
+  text-align: center;
+  font-size: 25px;
+  color: navy;
+  margin-bottom: 10px;
+}
+.newClassName {
+  width: 400px;
+  height: 100px;
+  background-color: lightblue;
+  text-align: center;
+  font-size: 25px;
+  color: navy;
+  margin-bottom: 10px;
+}
+</style>
+<title>ClassList</title>
+</head>
+<body>
+
+<p>Click the button to find out if the DIV element has a class of "mystyle". If so, remove "anotherClass".</p>
+
+<div id="myDIV">
+I am a DIV element
+</div>
+
+<button onclick="myFunction()">Try it</button>
+
+<script>
+function myFunction() {
+
+    var x = document.getElementById("myDIV");
+
+    console.log("Adding Class To Div");
+    x.classList.add("mystyle", "anotherClass", "thirdClass");
+
+    console.log("Toggling Class Of Div");
+    x.classList.toggle("newClassName");
+
+    if (x.classList.contains("mystyle")) {
+        console.log("Div Contain Class myStyle");
+        x.classList.remove("anotherClass");
+        console.log("Class myStyle Removed From Div");
+    } else {
+        console.log("Could not find it.");
+    }
+}
+</script>
+
+</body>
+</html>
+

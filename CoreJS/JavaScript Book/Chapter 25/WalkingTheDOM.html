@@ -1,0 +1,29 @@
+<!doctype html>
+<html>
+<head>
+<title>Walking The DOM</title>
+</head>
+<body>
+    <div>Begin</div>
+    <ul>
+        <li>Information</li>
+    </ul>
+    
+    <div>End</div>
+    
+    <!-- ChildNodes of document.body: -->
+    <script>
+        for (let i = 0; i < document.body.childNodes.length; i++) {
+          console.log( document.body.childNodes[i] ); // Text, DIV, Text, UL, ..., SCRIPT
+        }
+    </script>
+
+    <!--  modifying or replacing childNodes with children: -->
+    <script>
+        for (let elem of document.body.children) {
+            console.log(elem); // DIV, UL, DIV, SCRIPT
+        }
+    </script>
+
+</body>
+</html>

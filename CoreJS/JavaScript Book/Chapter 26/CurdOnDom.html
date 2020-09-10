@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Creating Elements</title>
+
+  <style>
+    body {
+      background-color: #0E454C;
+      padding: 20px;
+    }
+    h1 {
+      color: #14FFF7;
+      font-size: 52px;
+      font-family: sans-serif;
+      text-decoration: underline;
+    }
+    p {
+      color: #14FFF7;
+      font-family: sans-serif;
+      font-size: 28px;
+      font-weight: bold;
+    }
+    button{
+        color: #0E454C ;
+        background-color: #14FFF7;
+        font-size: large;
+        padding: 20px;
+    }
+  </style>
+</head>
+
+<body>
+    <h1>Am I real?</h1>
+    <button id="new" onclick="addNewELement()">Add New Element</button>
+    <button id="remove" onclick="removeNewElement()">Remove Element</button>
+    <button id="clone" onclick="cloneNewElement()">Clone Element</button>
+    <script>
+        
+        let newElement = document.createElement("p");
+        let bodyElement = document.querySelector("body");
+        let textElement = document.createElement("p");
+
+        function addNewELement(){
+
+            console.log("Inside Add")
+            newElement.textContent = "Or do I exist entirely in your imagination?";
+            bodyElement.appendChild(newElement);
+        }
+
+        function removeNewElement(){
+
+            console.log("Inside Remove")
+            newElement.parentNode.removeChild(newElement);
+        }
+
+        function cloneNewElement(){
+
+            console.log("Inside Clone")
+            textElement.textContent = "Or do I exist entirely in your imagination Of the Cloned?";
+            let clonedText = textElement.cloneNode(true);
+            bodyElement.insertBefore(clonedText,newElement);
+        }
+    </script>
+</body>
+
+</html>

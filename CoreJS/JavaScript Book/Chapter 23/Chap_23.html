@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>chp-23</title>
+
+    <style>
+        .highlight {
+       font-family: "Arial";
+       padding: 30px;
+        }
+        .summer {
+       font-size: 64px;
+       color: #0099FF;
+        }
+    </style>
+
+</head>
+<body>
+    <h1 id="theTitle" class="highlight summer">What's happening?</h1>
+
+    <script>
+        var title = document.querySelector("#theTitle");
+        console.log("Text Content: " + title.textContent);
+        console.log("ID Attribute: " + title.getAttribute('id'));
+
+        title.setAttribute("class", "bar foo summer");
+        console.log("Class Attribute: " + title.className);
+
+        title.textContent = "Gangnam Style!";
+    </script>
+</body>
+</html>
