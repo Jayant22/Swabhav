@@ -17,9 +17,16 @@
 </style>
 </head>
 <body>
-    <form ng-submit="addTask()">
-        <input type="text" class="add-input" placeholder="I need to..." ng-model="newTaskName" />
+    <form class="addForm" ng-submit="addTask()">
+        <h2>Add Data to Table::</h2>
+        <input type="text" class="add-input" placeholder="I Need To..." ng-model="newTaskName" />
         <button class="add-btn">Add</button>
+    </form>
+
+    <form class="updateForm">
+        <h2>Update Data to Table::</h2>
+        <input type='text' class='update-input' ng-model="updateTaskName"/>
+        <button class='update-btn' ng-click = "updateTask()">Update</button>
     </form>
     
     <table id="tbUser" ng-init="load()">
@@ -29,6 +36,7 @@
                 <th>Task</th>
                 <th>Time</th>
                 <th>Remove</th>
+                <th>Update</th>
             </tr>
         </thead>
         <tbody  ng-repeat="task in tasks track by $index">
@@ -36,7 +44,8 @@
                 <td><input type="checkbox" ng-model="Line" ng-click="checkBoxClick(Line,task.id)"/></td> 
                 <td id="{{task.id}}" ng-class="{line : Line}">{{ task.TaskMsg }}</td>
                 <td  class="{{task.id}}">{{task.Time}}</td>
-                <td><button class="delete-btn" ng-click="delete($index,task.TaskMsg)">Delete</button></td> 
+                <td><button class="delete-btn" ng-click="delete($index,task.TaskMsg)">Delete</button></td>
+                <td><button class="update-btn" ng-click="update($index,task.TaskMsg)">Update</button></td> 
             </tr>
         </tbody>
     </table>

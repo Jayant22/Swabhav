@@ -3,6 +3,8 @@ angular.module('toDoApp', [])
     $scope.id = 0;
     $scope.tasks =[];
     $scope.newTaskName = '';
+    $scope.updateTaskName = '';
+    $scope.taskIndex = 0;
 
     $scope.load = function () {
       for(var TaskMsg in window.localStorage) {
@@ -42,5 +44,19 @@ angular.module('toDoApp', [])
         console.log(index, task);
         $scope.tasks.splice(index, 1);
         localStorage.removeItem(task);
+    }
+
+    $scope.update = function(index,task){
+        console.log(index)
+        $scope.taskIndex = index;
+        $('.update-input').val(task);
+    }
+
+    $scope.updateTask = function(){
+        console.log($scope.taskIndex);
+        console.log($scope.updateTaskName);
+        localStorage.removeItem($scope.tasks[$scope.taskIndex].TaskMsg);
+        $scope.tasks[$scope.taskIndex].TaskMsg = $scope.updateTaskName;
+        localStorage.setItem($scope.tasks[$scope.taskIndex].TaskMsg, $scope.tasks[$scope.taskIndex].Time);
     }
 }]);
