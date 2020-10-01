@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html ng-app="factApp" ng-controller="factController">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="Numbers.css">
+    <title>Numbers API With Data</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.8/angular.min.js"></script>
+    <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.27.0/moment.min.js"></script>
+    <script src="Numbers.js"></script>
+</head>
+<body>
+    <div id="container">
+        <div class="inputs">
+            <p class="welcome-text">NUMBERS API</p>
+            <input type="text" class="Input" placeholder="Enter a Number to find its data" ng-model="userInput">
+            <br><br>
+            <button id="btn" ng-click="getFact()">Get Facts</button>
+        </div>
+        <div class="results" ng-init="load()"></div>
+    </div>
+</body>
+</html>

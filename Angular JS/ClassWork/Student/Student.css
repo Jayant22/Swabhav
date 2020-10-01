@@ -1,0 +1,8 @@
+body{
+    background-color: cyan;
+}
+p{
+    color: black;
+    font-size: 100%;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}

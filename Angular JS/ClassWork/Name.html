@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body{
+            background-color: cyan;
+        }
+        p{
+            color: black;
+            font-size: 300%;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        input{
+            display: block;
+             margin: 0;
+            padding: var(--inputPaddingV) var(--inputPaddingH);
+            color: inherit;
+            width: 100%;
+            font-family: inherit;
+            font-size: var(--inputFontSize);
+            font-weight: inherit;
+            line-height: var(--inputLineHeight);
+            border: none;
+            border-radius: 0.4rem;
+            transition: box-shadow var(--transitionDuration);
+        }
+    </style>
+    <title>Name In Uppercase</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.8/angular.min.js"></script>
+</head>
+<body>
+    <div ng-app="">
+        <p>
+            <label>Enter your Name :</label><br>
+            <input type="text" ng-model="yourname" />
+        </p>
+
+        <p> Your Name in Uppercase:: </p>
+        <p>{{ yourname | uppercase }} </p>
+    </div>
+    <div>
+        <p>{{yourname | uppercase}}</p>
+    </div>
+</body>
+</html>

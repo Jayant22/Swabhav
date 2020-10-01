@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    var str1 = "String-1";
+    var str2 = str1;
+
+    console.log("String ::");
+
+    console.log(str1);
+    console.log(str2);
+
+    console.log(str1 === str2);
+    
+    str1 = "New String-1";
+
+    console.log(str1 === str2);
+
+    var num1 = 10;
+    var num2 =  num1;
+
+    console.log("Numbers ::");
+    console.log(num1);
+    console.log(num2);
+    console.log(num1 === num2);
+
+    num1 = 20;
+    
+    console.log(num1 === num2);
+
+    var bool1 = true;
+    var bool2 = bool1;
+
+    console.log("Boolean ::");
+    console.log("bool1 - " +bool1);
+    console.log("bool2 - "+ bool2);
+    console.log(bool1 === bool2);
+    
+    bool1 = false;
+
+    console.log(bool1 === bool2);   
+</script>
+</body>
+</html>

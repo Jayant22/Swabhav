@@ -1,0 +1,65 @@
+body {
+    background: #29F4E3;
+    font-family: megrim, fantasy;
+    color: #333;
+}
+h1{
+    font-size: 3em; 
+    background: #1CA89C;
+    padding: 20px;
+    margin: 0;
+    text-align: center;
+}
+#tasks_list {
+    margin: 0px;
+    font-size: 2em;
+    
+}
+h3 {
+    font-size: 2em;
+    margin-top: 0px;
+}
+td {
+    min-width: 500px;
+    font-size: 1em;
+    padding-left: 50px;
+    vertical-align: top;
+}
+.complete {
+    text-decoration: line-through;
+    color: #999;
+}
+#input_task {
+    background: #29F4E3;
+    padding: 0;
+    font-size: 2em;
+    
+}
+.add-input {
+    width: 70%;
+    height: 1px;
+    float: left;
+    border: none;
+    padding: 30px 0px;
+    font-family: megrim, fantasy;
+    font-size: 1.5em;
+    text-indent: 55px;
+}
+.add-btn {
+    width: 30%;
+    font-size: 2em;
+    border: none;
+    background: #1CA89C;
+    height: 62px;
+}
+p{
+    background: #29F4E3;
+    font-size: 1em;
+}
+.delete-btn {
+    width: 100%;
+    font-size: 2em;
+    border: none;
+    background: #1CA89C;
+    height: 62px;
+}

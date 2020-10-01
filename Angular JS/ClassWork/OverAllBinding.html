@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Two Way Binding</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+</head>
+<body ng-app="myApp">
+
+    <h1>One Way Binding</h1>
+
+    <div ng-controller="myController1">
+        <div ng-repeat="Student in Students" >
+            <p>Student Name: {{Student.Name}}</p>
+            <p>Student Roll No: {{Student.Roll_No}}</p>
+            <p>Student CGPA: {{Student.CGPA}}</p>
+        </div>
+    </div>
+    
+    <hr>
+
+    <h1>Two Way Binding</h1>
+
+    <div ng-controller="myController2">
+    <p>
+        <label>Enter your Name :</label><br>
+        <input type="text" ng-model="name"/>
+    </p>
+    <p>
+        <label>Enter your Name :</label><br>
+        <input type="text" ng-model="rollno"/>
+    </p>
+    <p>
+        <label>Enter your Name :</label><br>
+        <input type="text" ng-model="cgpa"/>
+    </p>
+    <p>Entered Name:   {{ name }}</p>
+    <p>Entered Roll No:   {{ rollno }}</p>
+    <p>Entered Name:   {{ cgpa }}</p>
+    <script>
+        var students = angular.module("myApp", []);
+
+        students.controller('myController1', function($scope) {
+        $scope.Students = [{
+            Name: "John Smith",
+            Roll_No: 1,
+            CGPA: 9.5
+        }];
+        });
+
+        students.controller('myController2', function ($scope) {
+        $scope.name = 'John Smith';
+        $scope.rollno = "1";
+        $scope.cgpa = "9.5";
+        });
+    </script>
+</body>
+</html>

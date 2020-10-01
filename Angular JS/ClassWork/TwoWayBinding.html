@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<head>
+<style>
+    body{
+            background-color: cyan;
+        }
+        p{
+            color: black;
+            font-size: 100%;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        input{
+            display: block;
+             margin: 0;
+            padding: var(--inputPaddingV) var(--inputPaddingH);
+            color: inherit;
+            width: 50%;
+            font-family: inherit;
+            font-size: var(--inputFontSize);
+            font-weight: inherit;
+            line-height: var(--inputLineHeight);
+            border: none;
+            border-radius: 0.4rem;
+            transition: box-shadow var(--transitionDuration);
+        }
+</style>
+<title>AngularJs Two Binding Example</title>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+<script type="text/javascript">
+    var app = angular.module('myApp', []);
+    app.controller('myController', function ($scope) {
+        $scope.name = 'John Smith';
+        $scope.rollno = "1";
+        $scope.cgpa = "9.5";
+    });
+</script>
+</head>
+<body ng-app="myApp">
+<h2>AngularJS Two Way Data Bind Example</h2>
+<div ng-controller="myController">
+    <p>
+        <label>Enter your Name :</label><br>
+        <input type="text" ng-model="name"/>
+    </p>
+    <p>
+        <label>Enter your Name :</label><br>
+        <input type="text" ng-model="rollno"/>
+    </p>
+    <p>
+        <label>Enter your Name :</label><br>
+        <input type="text" ng-model="cgpa"/>
+    </p>
+    <p>Entered Name:   {{ name }}</p>
+    <p>Entered Roll No:   {{ rollno }}</p>
+    <p>Entered Name:   {{ cgpa }}</p>
+</div>
+</body>
+</html>

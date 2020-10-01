@@ -1,5 +1,5 @@
 $(document).ready(function() {
-    let inputAndTimeArr = [];
+    let inputAndTimer = [];
     let localStorageIndex = 0;
     for(var key in localStorage) {
         if(window.localStorage.hasOwnProperty(key)) {
@@ -20,14 +20,14 @@ $(document).ready(function() {
         const timeDiff = calculateTimeDifference(time);
 
         if(inputValue != null) {
-            inputAndTimeArr = [inputValue, time];
+            inputAndTimer = [inputValue, time];
             
             fetch("http://numbersapi.com/" + inputValue + "/trivia")
             .then(response => response.text())
             .then(trivia => {
                 $('.results').append("<p class='trivia'>" + trivia.split('.').join('') + "<span> searched at " +
                 time + " " + timeDiff + "</span></p>");
-                localStorage.setItem(inputAndTimeArr, trivia);
+                localStorage.setItem(inputAndTimer, trivia);
             });
         } else {
             alert("Please enter a number to find it's trivia.");

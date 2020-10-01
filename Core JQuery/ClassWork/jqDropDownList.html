@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dropdown List</title>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>>
+
+</head>
+<body>
+    <select name="dropdown" id="colors">'
+        <option selected disabled>Select</option>
+        <option value="red" id="red">Red</option>
+        <option value="blue" id="blue">Blue</option>
+        <option value="green" id="green">Green</option>
+        <option value="yellow" id="yellow">Yellow</option>
+    </select>
+    <button id="btn">Submit</button>
+
+    <script>
+        $(document).ready(function() {
+            $('#btn').click(function() {
+                $('body').css('background-color', $('#colors').val());
+                $('#btn').css('background-color', $('#colors').val());
+            });
+        });
+    </script>
+</body>
+</html>
