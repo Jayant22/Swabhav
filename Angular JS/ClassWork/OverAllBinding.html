@@ -38,15 +38,16 @@
     <p>Entered Name:   {{ name }}</p>
     <p>Entered Roll No:   {{ rollno }}</p>
     <p>Entered Name:   {{ cgpa }}</p>
+    
     <script>
         var students = angular.module("myApp", []);
 
         students.controller('myController1', function($scope) {
-        $scope.Students = [{
-            Name: "John Smith",
-            Roll_No: 1,
-            CGPA: 9.5
-        }];
+            $scope.Students = [{
+                Name: "John Smith",
+                Roll_No: 1,
+                CGPA: 9.5
+            }];
         });
 
         students.controller('myController2', function ($scope) {

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mulitple Modules</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+</head>
+<body ng-app="app1">
+
+    <div ng-controller='contoller1'>
+        <p>Controller 1</p>
+        <p>{{name}}</p>
+        <p>{{id}}</p>
+    </div>
+
+    <div ng-controller='contoller2'>
+        <p>Controller 2</p>
+        <p>{{name}}</p>
+        <p>{{id}}</p>
+    </div>
+
+    <div ng-controller='contoller3'>
+        <p>Controller 3</p>
+        <p>{{name}}</p>
+        <p>{{id}}</p>
+    </div>
+
+    <script>
+        angular.module('app1', ['app2'])
+        .controller('contoller1', function($scope, $rootScope) {
+            $scope.name = "sam";
+            $rootScope.id = 101;
+        });
+
+        angular.module('app2', ['app3'])
+        .controller('contoller2', function($scope) {
+            $scope.name = 'tom';
+        });
+
+        angular.module('app3', [])
+        .controller('contoller3', function($scope) {
+            $scope.name = 'john';
+        });
+    </script>
+</body>
+</html>

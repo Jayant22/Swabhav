@@ -1,0 +1,45 @@
+<div class="jumbotron">
+    <div class="container">
+        <h1 class= "display-1 text-center">Students Details</h1>
+        <p class=" display-5 lead text-center">Student details fetched from Student API</p>
+    </div>
+</div>
+
+<div class="container">
+    <a class="btn btn-outline-primary btn-block" href="#/studentForm">Add New Student</a>
+</div>
+
+<br>
+<div class="container">
+    <table id="studentTable" class="table table-responsive">
+        <thead class="thead-dark">
+            <tr>
+                <th>ID</th>
+                <th>Roll No</th>
+                <th>Name</th>
+                <th>Age</th>
+                <th>Email</th>
+                <th>Date</th>
+                <th>Gender</th>
+                <th>Update</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="std in students">
+                <td>{{std.id}}</td>
+                <td>{{std.rollno}}</td>
+                <td>{{std.name}}</td>
+                <td>{{std.age}}</td>
+                <td>{{std.email}}</td>
+                <td>{{std.date}}</td>
+                <td>{{std.gender}}</td>
+                <td><button class="btn btn-outline-warning" ng-click='updateStudentInfo(std.id)'>Update</button></td>
+                <td><button class="btn btn-outline-danger" ng-click='deleteStudents(std.id);'>Delete</button></td>
+            </tr>   
+        </tbody>
+        
+
+    </table>
+
+</div>

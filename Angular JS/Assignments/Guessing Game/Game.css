@@ -20,7 +20,7 @@ p {
     margin: 2px 1px;
     font-weight: bolder;
 }
-#start {
+#start, #startagain{
     background-image: linear-gradient(to right, #ffd89b, #19547b);
     color: black;
     border: 2px solid red;

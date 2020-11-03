@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Single Page Application</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="stylesheet" href="bikes.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.28/angular.min.js"></script>
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.28//angular-route.min.js"></script>
+
+</head>
+
+<body ng-app="myapp">
+
+  <div  ng-controller="cntrlBike">
+
+    <div class="jumbotron text-center">
+      <h1> Dream Bikes </h1>
+      <p>WE BELIEVE IN NOTHING BUT EXTRAORDINARY</p> 
+    </div>
+      
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-4">
+          <h3>{{Bajaj}}</h3>
+         <img src="https://upload.wikimedia.org/wikipedia/en/thumb/d/d0/Bajaj_auto_logo.svg/1200px-Bajaj_auto_logo.svg.png"> </img>
+          <p>The World's Favourite Indian</p> 
+          <a href="#/bajaj">Bajaj List</a>
+        </div>
+    
+        <div class="col-sm-4">
+          <h3>{{Yamaha}}</h3>
+          <img src="https://i.pinimg.com/originals/32/02/6a/32026a64b16ee389069f03e5dcfc6e2f.jpg"> </img>
+          <p>Revs-Your-Heart</p>
+          <a href="#/yamaha">Yamaha Bikes</a>
+        </div>
+        
+        <div class="col-sm-4">
+          <h3>{{Honda}}</h3>        
+          <img src="https://i.pinimg.com/originals/ef/84/ba/ef84ba53f0cd24dad3392d23de5827c6.jpg"> </img>
+          <p>The Power of dreams</p>
+          <a href="#/honda">Honda Bikes</a>
+        </div>
+      
+        </div>
+    </div>
+    
+    <ng-view></ng-view>
+    
+  </div>
+
+  <script src="./bike.js"></script>
+</body>
+</html>

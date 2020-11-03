@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <title>Data Binding</title>
+</head>
+<body ng-app = "bindApp" ng-controller = "bindController">
+    Name: <input type="text" ng-model="name"> <br> <br>
+    Size: <input type="text" ng-model="size"> <br> <br>
+    Background Color: <input type="text" ng-model="bgColor"> <br> <br>
+    Foreground Color: <input type="text" ng-model="fgColor"> <br> <br>
+
+    <p ng-style="{'color':fgColor, 'background-color':bgColor, 'font-size':size+'px'}" ng-bind="name">{{name}}</p>
+
+    <script>
+        var app = angular.module("bindApp", []);
+        app.controller("bindController", function($scope) {
+        });
+    </script>
+</body>
+</html>

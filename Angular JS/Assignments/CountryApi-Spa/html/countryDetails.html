@@ -1,0 +1,18 @@
+<div class="container">
+    <table id="countryTable" class="table table-bordered">
+        <thead class="thead-light">
+            <tr>
+                <th>Country Name</th>
+                <th>Country Capital</th>
+                <th>Country Flag</th>
+
+            </tr>
+        </thead>
+        <tr ng-repeat="country in countries">
+            <td>{{country.name}}</td>
+            <td>{{country.capital}}</td>
+            <td><img ng-src={{country.flag}} alt="Flag not Found"></td>
+        </tr>
+
+    </table>
+</div>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html ng-app = "loopApp" ng-controller = "loopController">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <section>
+        <h1>String Array</h1>
+        <div ng-repeat="Name in StudentName">
+            <p>{{Name}}</p>
+        </div>
+    </section>
+    <section>
+        <h1>Number Array</h1>
+        <div ng-repeat="No in StudentNo">
+            <p>{{No}}</p>
+        </div>
+    </section>
+<script>
+    var app = angular.module('loopApp', []);
+    app.controller('loopController', function($scope) {
+        $scope.StudentName = ['Jay','Sailesh','Paras']
+        debugger;
+        $scope.StudentNo = [101,102,103];
+    });
+</script>
+</body>
+</html>

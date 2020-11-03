@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Custom Directive</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+</head>
+<body ng-app = 'CustomApp' ng-controller = 'CustomCtrl'>
+    <h1>Custom Directive For Header And Footer</h1>
+    <swabhav-header></swabhav-header>
+    <swabhav-footer></swabhav-footer>
+    <swabhav-footer year="2020"></swabhav-footer>
+</body>
+</html>
+<script>
+    angular.module("CustomApp", [])     
+    .directive('swabhavHeader', function() {
+        return{
+            restrict:"E",
+            template:'<header><h2>Swabhav TechLab</h2></header>'
+            
+        }
+    })
+
+    .directive('swabhavFooter', function() {
+        function swFooterFnc($scope,$element,$attr){
+            $scope.year=$attr.year;
+        }
+        return{
+            link:swFooterFnc,
+            scope:true,
+            template:'<footer><h3>Swabhav TechLab {{year}}</h3></footer>'
+        }
+    })
+
+    .controller('CustomCtrl',['$scope',function($scope){
+
+    }]);
+</script>

@@ -1,0 +1,47 @@
+<div class="jumbotron">
+    <div class="container">
+        <p class="display-2">Add New Student Details</p>
+    </div>
+</div>
+
+<div class="container">
+    <form>
+        <div class="form-group">
+            <label for="studentName">Student Name: </label>
+            <input type="text" id="studentName" ng-model="name" placeholder="Student Name" class="form-control">
+        </div>
+
+        <div class="form-group">
+            <label for="rollNo">Roll No: </label>
+            <input type="text" id="rollNo" ng-model="rollNo" placeholder="Enter Student's Roll Number" class="form-control">
+    
+        </div>
+        
+        <div class="form-group">
+            <label for="age">Age: </label>
+            <input type="text" id="age" ng-model="age" placeholder="Enter Student's Age" class="form-control">    
+        </div>
+         
+        <div class="form-group">
+            <label for="email">Email: </label>
+            <input type="text" id="email" ng-model="email" placeholder="Enter Student's email" class="form-control">
+    
+        </div>
+
+        <div class="form-group">
+            <label for="date">Date: </label>
+            <input type="text" id="date" ng-model="date" placeholder="Enter Student's Date of Birth" class="form-control">
+        </div>
+
+        <div class="form-group">
+            <label for="isMale">Gender: </label>
+            <input type="radio" name="isMale" ng-model='gender' value="Male" id="male"> Male
+            <input type="radio" name="isMale" ng-model='gender' value="Female" id="female"> Female
+    
+        </div>   
+
+        <button class="btn btn-outline-primary" ng-click='addStudent()'>Submit</button>
+        <a href="#/studentsApi" class="btn btn-outline-success">Check Existing Students</a>
+    </form>
+            
+</div>

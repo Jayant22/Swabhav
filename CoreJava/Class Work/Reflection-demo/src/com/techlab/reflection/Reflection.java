@@ -29,7 +29,7 @@ public class Reflection {
 		System.out.println("Classs Private Members::");
 		for (int i = 0; i < privateStringMethod.length; i++) {
 			
-			privateStringMethod[i].setAccessible(true);
+			privateStringMethod[i].setAccessible(true); 
 
 			System.out.println(privateStringMethod[i]);
 

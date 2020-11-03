@@ -1,0 +1,67 @@
+<html>
+<head>
+    <title>Factory</title>
+    <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+</head>
+
+<body ng-app="myapp" ng-controller='cntrl'>
+
+    <div>
+       <input type="text" placeholder="Enter a number" ng-model ="number">
+       <button ng-click = "testNumber(number)"> Enter </button>
+       <br>
+       <p ng-show="isVisible"> {{number}} Number is {{eoResult}} & {{primeResult}} </p>
+    </div>
+
+<script>
+    var app = angular.module("myapp",[]);
+
+    app.factory('getNumber', function(){ 
+        var numObject = {};
+
+        numObject.evenOdd = function(number){
+            if(number % 2 == 0 ){               
+                return "Even" ;
+            }        
+            else{ 
+                return "Odd"; 
+            }
+        }
+
+        numObject.prime = function(number){
+            var flag = true ;
+
+            for(i = 2; i <= number - 1; i++) 
+                if (number % i == 0) { 
+                    flag = false; 
+                    break; 
+                } 
+                  
+            if (flag == true){
+                return "Prime";
+            }
+            else{
+                return "not Prime";
+            }       
+        }
+        return numObject ;
+    });
+
+    app.controller("cntrl",function($scope,$rootScope,getNumber){
+        $scope.isVisible = false ;         
+        $scope.number;
+        $rootScope.eoResult;
+        $rootScope.primeResult;
+
+        $scope.testNumber = function(number){
+            console.log("Inside No");
+            $scope.isVisible = true ;
+            $rootScope.eoResult = getNumber.evenOdd(number) ;
+            $rootScope.primeResult = getNumber.prime(number);
+        }
+    });
+</script>
+
+</body>
+</html>

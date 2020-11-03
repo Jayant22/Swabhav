@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CGPA to Grade</title>
+
+    <link rel="stylesheet" href="Name.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+
+</head>
+<body ng-app='customFilterApp'>
+    
+    <div ng-controller='customFilterController'>
+        <table id="students">
+            <tr>
+                <th>Roll No</th>
+                <th>Name</th>
+                <th>CGPA</th>
+            </tr>
+    
+            <tr ng-repeat="std in students">
+                <td>{{std.rollNo}}</td>
+                <td>{{std.name | nameToUppercase}}</td>
+                <td>{{std.cgpa}}</td>
+            </tr>
+        </table>
+    </div>
+
+    <script src="Name.js"></script>
+</body>
+</html>

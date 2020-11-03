@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Factory Servie</title>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    
+</head>
+<body ng-app='factoryApp'>
+
+    <div ng-controller='factoryController1'>
+        <p>
+            <button ng-click='increment();'>Increment</button>
+        </p>
+    </div>
+
+    <div ng-controller='factoryController2'>
+        <p>
+            <button ng-click='decrement();'>Decrement</button>
+        </p>
+    </div>
+
+    <div ng-controller='factoryController'>
+        <h4>{{buttonPressedCount}}</h4>
+    </div>
+
+    <script>
+        var factoryApp = angular.module('factoryApp', []);
+
+        var buttonPressedCount = 0;
+
+        factoryApp.service('countButtonsPressed', function() {
+
+        this.incrementCount = function(buttonPressedCount) {
+            return buttonPressedCount += 1;
+        }
+
+        this.decrementCount = function(buttonPressedCount) {
+            return buttonPressedCount -= 1;
+        }
+
+        this.currentCount = function() {
+            return buttonPressedCount;
+        }
+
+    });
+
+
+    factoryApp.controller('factoryController1', function($scope, $rootScope, countButtonsPressed) {
+
+        $scope.increment = function() {
+            buttonPressedCount = countButtonsPressed.incrementCount(buttonPressedCount);
+            console.log(buttonPressedCount);
+            $rootScope.buttonPressedCount = buttonPressedCount;
+        }
+
+    });
+
+    factoryApp.controller('factoryController2', function($scope, $rootScope, countButtonsPressed) {
+
+        $scope.decrement = function() {
+            buttonPressedCount = countButtonsPressed.decrementCount(buttonPressedCount);
+            console.log(buttonPressedCount);
+            $rootScope.buttonPressedCount = buttonPressedCount;
+        }
+
+    });
+
+    factoryApp.controller('factoryController', function($rootScope) {
+        $rootScope.buttonPressedCount = buttonPressedCount;
+    });
+</script>
+</body>
+</html>
