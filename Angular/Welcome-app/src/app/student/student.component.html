@@ -1,0 +1,49 @@
+<p [innerHtml]='"Hello world using property bindindg."' [style.color]="'red'"></p>
+
+<div class="container">
+    <h1 [innerHtml]='"IStudent"'></h1>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Profile Picture</th>
+                <th>ID</th>
+                <th>Name</th>
+                <th>CGPA</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><img [src]="img" alt="Image not found" [style.max-width]="width" [style.max-height]="height" /></td>
+                <td [innerHtml]="student.id"></td>
+                <td [innerHtml]="student.name"></td>
+                <td [innerHtml]="student.cgpa"></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="container">
+        <br>
+        <button (click)='loadAllStudents();'>Load Students</button>
+    </div>
+    
+    <div *ngIf='isActive'>
+        <h1 [innerHtml]='"IStudent[]"'></h1>
+        <table class="table table-bordered">
+            <tr>
+                <th>Profile Picture</th>
+                <th>ID</th>
+                <th>Name</th>
+                <th>CGPA</th>
+            </tr>
+            <tbody *ngFor = "let student of students">
+                <tr>
+                    <td><img [src]="img" alt="Image not found" [style.max-width]="width" [style.max-height]="height" /></td>
+                    <td [innerHtml]="student.id"></td>    
+                    <td [innerHtml]="student.name"></td>
+                    <td [innerHtml]="student.cgpa"></td>
+                </tr>
+            </tbody>
+            
+        
+        </table>
+</div>

@@ -1,0 +1,11 @@
+.msg{
+    font-size: 30px;
+    font-weight: bolder;
+    color: Red;
+}
+
+.msg_data{
+    font-size: 1em;
+    font-weight: bolder;
+    color:crimson;
+}

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promise And Promise Chaining</title>
+</head>
+<body>
+<script>
+
+    var addition = function(a,b){
+        return a+b;
+    }
+
+    var add = function(x, y) {
+        return new $q((resolve,reject) => {
+            var sum = x + y;
+            if (sum) {
+                resolve(sum);
+            }
+            else {
+                reject(Error("Could not add the two values!"));
+            }
+        });
+    };
+
+    console.log("Addition result is", addition(10,20));  
+    
+    // Starting promise chain
+    add(2,2)
+    .then((result) => {
+        // result = 4
+        console.log("My 1st chain result is ", result);
+        return add(result,3);
+    })
+    .then((result) => {
+        // result = 7
+        console.log("My 2nd chain result is ", result);
+        return result * 2;
+            
+    })
+    .then((result) => {
+        // result = 12
+        console.log("My Final result is ", result);
+    })
+    .catch((err) => {
+        // If any part of the chain is rejected, print the error message.
+        console.log(err);
+    });
+
+    console.log("End Of The Program");
+</script>
+</body>
+</html>

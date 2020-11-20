@@ -1,0 +1,17 @@
+#btnBalls{
+    display: grid;
+    grid-column-gap: 5px;
+    grid-row-gap: 5px;
+    grid-template-columns: auto auto auto auto auto auto auto auto auto auto;
+    background-image: linear-gradient(to right, #A5C7B7,#9DC5C3);
+    padding: 5px;   
+}
+
+.button{
+    border-radius: 50%;
+    width: 80%;
+    color: Black;
+    padding: 20px;
+    font-size: 25px;
+    margin: 4px 2px;
+}

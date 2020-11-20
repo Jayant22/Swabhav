@@ -6,11 +6,16 @@
 </div>
 
 <div class="container">
-    <a class="btn btn-outline-primary" href="#/studentForm">Add New Student</a>
+    <label class="custom-label" >SEARCH</label>
+    <input class="form-control border border-primary" input type="text" ng-model="search" placeholder="Enter Student Name to Search" >
+</div>
+<br>
+<div class="container">
+    <a class="btn btn-outline-primary btn-block" href="#/studentForm">Add New Student</a>
 </div>
 
 <br>
-<div class="container">
+<div class="container"> 
     <table id="studentTable" class="table table-bordered">
         <tr>
             <th>ID</th>
@@ -24,7 +29,7 @@
             <th>Delete</th>
         </tr>
 
-        <tr ng-repeat="std in students">
+        <tr ng-repeat="std in students | filter : search">
             <td>{{std.id}}</td>
             <td>{{std.rollno}}</td>
             <td>{{std.name}}</td>

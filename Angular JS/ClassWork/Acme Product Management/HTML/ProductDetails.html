@@ -1,0 +1,23 @@
+<div class="container">
+    <div class="card">
+        <h5 class="card-header" style="color:whitesmoke; background-color: #3a7eb5;">Product Details: <span></span></h5>
+        <div id="First" class="card-body">
+            <div class="container">
+                <p class="card-text">Name: {{product.productName}}</p>
+                <p class="card-text">Code: {{product.productCode}}</p>
+                <p class="card-text">Description: {{product.description}}</p>
+                <p class="card-text">Availability: {{product.releaseDate}}</p>
+                <p class="card-text">Price: {{product.price}}</p>
+                <p class="card-text">5 Star Rating: {{product.starRating}}</p>
+            </div>
+
+            <div id="Second" class="container">
+                <img class="productImage" src="{{product.imageUrl}}" alt="Image Not Found">
+            </div>
+        </div>
+
+        <div class="card-footer">
+            <a class="btn btn-outline-secondary" href="#/productlist">&laquo; Back</a>
+        </div>
+    </div>
+</div>

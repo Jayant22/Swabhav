@@ -1,0 +1,35 @@
+<div class="container">
+    <div class="container">
+        <app-star [rating]="currentRating" (mouseover)="onMouseOverHandler()">
+
+        </app-star>    
+    </div>
+    
+    <div class="container">
+        <table class="table table-bordered">
+            <tr>
+                <th>1</th>
+                <th>2</th>
+                <th>3</th>
+                <th>4</th>
+                <th>5</th>
+                <th>6</th>
+            </tr>
+            <tr>
+                <td><app-star [rating]="currentRating" (mouseover)="onMouseOverHandler()">
+                </app-star></td>
+                <td><app-star [rating]="currentRating" (mouseover)="onMouseOverHandler()">
+                </app-star></td>
+                <td><app-star [rating]="currentRating" (mouseover)="onMouseOverHandler()">
+                </app-star></td>
+                <td><app-star [rating]="currentRating" (mouseover)="onMouseOverHandler()">
+                </app-star></td>
+                <td><app-star [rating]="currentRating" (mouseover)="onMouseOverHandler()">
+                </app-star></td>
+                <td><app-star [rating]="currentRating" (mouseover)="onMouseOverHandler()">
+                </app-star></td>
+            </tr>
+        </table>
+    </div>
+    
+</div>

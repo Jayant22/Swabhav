@@ -29,6 +29,7 @@
   <script>
     var worker;
     function testWorker() {
+        console.log("Worker!!!!!!")
         if (typeof(Worker) !== "undefined") {
             if (typeof(worker) == "undefined") {
                 worker = new Worker("Async.js");
