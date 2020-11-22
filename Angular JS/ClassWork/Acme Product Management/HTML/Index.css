@@ -1,4 +1,13 @@
 .productImage {
-    margin-top: -15rem;
-    margin-left: 40rem;
+    margin-top: -12rem;
+    margin-right: 30rem;
+    width: 15rem;
 }
+#star{
+    margin-top: -2.1rem;
+    margin-left: 12.5rem;
+}
+
+.Left {margin-left: 10rem; }
+
+.Right {margin-left: 7.5rem;}

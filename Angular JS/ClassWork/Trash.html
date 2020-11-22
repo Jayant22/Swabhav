@@ -1,68 +1,17 @@
-<!DOCTYPE html>
-
-<head>
-    <title>Location</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-  
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-  
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.28/angular.min.js"></script>
-</head>
-
-<body ng-app="myapp" ng-controller="cntrl">
-
-
-    <div class="container p-3 my-3 border">
-        <h1> <mark> Swabhav Technology </mark> </h1>
-        <h6> <dt> Transforming design driven technology </dt> </h6>
-        <a href="#/home">Home</a>
-        <a href="#/about">Aboust us</a>
-        <a href="#/help">Help</a>
-    </div>
-
-    <div id="home">  
-        <p>If you have the thirst to learn and a passion for coding, you belong at Techlabs. Let our courses help you explore, develop your skills and guide you towards establishing your career of a lifetime. </p>       
-        <p>Each one of these courses under the right mentorship from our Industry Experts combined with the self-paced methodology and your initiative towards gaining knowledge would help you land a job you love.</p>
-    </div>
-    
-    <div id="about">
-        <p>At Swabhav Techlabs, we partner with Colleges, Students and Software development Companies by being "The platform to nurture the talent and transform them into Industry Ready Software Professionals ". For students we are "The mentors for skill building and Career Growth " </p>  
-        <p> For Software companies we are their "Sourcing and Skill Building Partners ". </p>  
-        <p> Our immersive courses guide you through hundreds of lessons and assignments to build real life, production ready projects over three months, with full support from experienced instructors. We will build your programming and design skills from the ground up, all the way to the professional level. If you are committed and ready to work hard, we promise a Transformative Design Driven learning experience that will turn you into a confident developer.</p>
-    </div>
-
-    <div id="help">
-        <p> Address: B-1/304, 2nd Floor, Laram Centre, M.A.Road, Opposite Andheri(W) Station. </p>
-        <p> Email: info@swabhavtechlabs.com </p>
-        <p> Phone: +91-9930527293 </p>
-    </div>
-
-<script>
-    var app = angular.module("myapp",[]);
-    app.controller("cntrl",function($scope,$location,$window){
-
-        $window.addEventListener('hashchange', function() {
-                //$rootScope.$broadcast('message', e.data);
-            
-                if( $location.hash() === "/home" ){
-                    console.log("Page loaded from "+$location.hash());
-                }
-        
-                if( $location.hash() === "/about" ){
-                    console.log("Page loaded from "+$location.hash());
-                }
-
-                if( $location.hash() === "/help" ){
-                    console.log("Page loaded from "+$location.hash());
-                }
-        });
-    });
-</script>
-
-</body>
-</html>
-
+app.directive('customwidth', function() {
+    return {
+      restrict: 'A',
+      require: '^ngWidth',
+      scope: {
+        ngRate: '@'
+      },
+      template: 'style="width:{{ calWidth }} + px"',
+      controller: ['$scope', '$http', function($scope, $http) {
+        $scope.setWidth = function(rate) {
+          scope.calWidth = 14 * 
+      }],
+      link: function(scope, iElement, iAttrs, ctrl) {
+        scope.setWidth(iAttrs.ngRate);
+      }
+    }
+});

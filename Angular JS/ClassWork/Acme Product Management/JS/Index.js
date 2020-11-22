@@ -21,6 +21,20 @@ AcmeProductApp.config(function($routeProvider) {
 
 AcmeProductApp.value('url', '../Resource/products.jsonx');
 
+AcmeProductApp.directive('getWidth', function () {
+    return {
+        restrict: "A",
+        scope: {
+            "rowHeight": '='
+        },
+        link: function (scope, element) {
+            scope.$watch("rowHeight", function (value) {
+                (element).css('width', (14 * scope.rowHeight) + "px");
+            }, false);
+        }
+    }
+});
+
 AcmeProductApp.controller('welcomeController', ['$scope', function($scope) {
         console.log("Inside The Welcome Controller");
 }]);
@@ -39,7 +53,6 @@ AcmeProductApp.controller('productlistController', ['$scope','$rootScope', '$loc
         console.log(response.data);
 
         for (var i = 0; i < response.data.length; i++) {
-    
             $scope.products.push({
                 'productId': response.data[i].productId,
                 'productName': response.data[i].productName,
@@ -87,6 +100,7 @@ AcmeProductApp.controller('productdetailsController', ['$scope','$rootScope', '$
     console.log("Inside The Product Details Controller");    
 
     $scope.product;
+    $scope.rate = 0;
 
     $scope.product = {
         'productId': $rootScope.productId,
@@ -98,4 +112,7 @@ AcmeProductApp.controller('productdetailsController', ['$scope','$rootScope', '$
         'starRating':$rootScope.starRating,
         'imageUrl': $rootScope.imageUrl
     }
+
+    $scope.rate = $scope.product.starRating;
+    console.log($scope.rate, $scope.product);
 }]);

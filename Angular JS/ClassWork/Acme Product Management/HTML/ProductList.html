@@ -4,7 +4,7 @@
         <div class="card-body">
             <div class="form-group row">
                 <label for="filterProduct" style="margin-left: 2rem;">Filter By: </label>
-                <input type="text" id="filterProduct" ng-model="filterBy" style="margin-left: 5rem; width: 30rem; height: 2rem;">
+                <input type="text" class="form-control border border-primary" id="filterProduct" ng-model="filterBy" style="margin-left: 5rem; width: 30rem; height: 2rem;">
             </div>
             <div>
                 <table class="table table-hover text-center">
@@ -20,14 +20,14 @@
                     </thead>
                     <tbody>
                         <tr ng-repeat="product in products | filter : filterBy">
-                            <td><img src="{{ product.imageUrl }}" alt="" ng-show='showImage' width="50px" height="auto"></td>
+                            <td><img src="{{ product.imageUrl }}" alt="Image Not Found" ng-show='showImage' width="50px" height="auto"></td>
                             <td><a href="#/productdetails" ng-click="productTransfer(product.productId);">{{product.productName}}</a></td>
                             <td>{{product.productCode}}</td>
                             <td>{{product.releaseDate}}</td>
-                            <td>{{product.price}}</td>
-                            <td>
-                                <div style="width: '28px'; overflow: hidden;">
-                                    <div style="width: '70px';">
+                            <td>${{product.price}}</td>
+                            <td class="card-text text-center">
+                                <div get-width row-height=  product.starRating style="overflow: hidden;">
+                                    <div style="width: 70px;">
                                         <span class="glyphicon glyphicon-star"></span>
                                         <span class="glyphicon glyphicon-star"></span>
                                         <span class="glyphicon glyphicon-star"></span>
