@@ -21,6 +21,17 @@ AcmeProductApp.config(function($routeProvider) {
 
 AcmeProductApp.value('url', '../Resource/products.jsonx');
 
+AcmeProductApp.factory('getProductList', ['$http', 'url', function($http, url) {
+
+    var getProductList = {};
+
+    getProductList.productList = function() {
+        
+        return $http.get(url);
+    }
+    return getProductList;
+}]);
+
 AcmeProductApp.directive('getWidth', function () {
     return {
         restrict: "A",
@@ -39,32 +50,19 @@ AcmeProductApp.controller('welcomeController', ['$scope', function($scope) {
         console.log("Inside The Welcome Controller");
 }]);
 
-AcmeProductApp.controller('productlistController', ['$scope','$rootScope', '$location', '$http', 'url', function($scope, $rootScope, $location, $http, url) {
+AcmeProductApp.controller('productlistController', ['$scope','$rootScope', 'getProductList', function($scope, $rootScope, getProductList) {
     console.log("Inside The Product List Controller");
     $scope.btnValue = 'Show Image';
     $scope.showImage = false;
     $scope.products = [];
 
-    $http({
-        method: 'get',
-        url: url,
-    })
-    .then(function(response) {  
-        console.log(response.data);
-
-        for (var i = 0; i < response.data.length; i++) {
-            $scope.products.push({
-                'productId': response.data[i].productId,
-                'productName': response.data[i].productName,
-                'productCode': response.data[i].productCode,
-                'releaseDate': response.data[i].releaseDate,
-                'description': response.data[i].description,
-                'price': response.data[i].price,
-                'starRating': response.data[i].starRating,
-                'imageUrl': response.data[i].imageUrl
-            });
-        }
-    });
+    getProductList.productList()
+        .then(function (response) {
+            $scope.products = response.data;
+            console.log($scope.products);
+        },function (error) {
+            $scope.status = 'Unable to load customer data: ' + error.message;
+        });
 
     $scope.showAllImage = function(){
         if ($scope.btnValue == 'Show Image') {

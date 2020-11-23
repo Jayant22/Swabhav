@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MathObservableServiceService } from '../math-observable-service.service';
+import { MathObservableServiceService } from '../Services/math-observable-service.service';
 
 @Component({
   selector: 'app-observable',

@@ -166,3 +166,18 @@ studentsApp.controller('updateStudentController', ['$scope', '$rootScope', 'upda
         }
     }
 ]);
+
+// AcmeProductApp.service('getProductList', function($http, url) {
+//     this.productList = function() {
+
+//         $http({
+//             method: 'get',
+//             url: url,
+//         })
+//         .then(function(response) {  
+//             console.log(response.data);
+//             return (response.data);
+//         });
+      
+//     }
+//  });

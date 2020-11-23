@@ -3,16 +3,13 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 import { WelcomeComponent } from './welcome/welcome.component';
-//import { ObservableComponent } from './observable/observable.component';
-import { StarRatingComponent } from './star-rating/star-rating.component';
-import { StarComponent } from './star-rating/star/star.component';
+import { StudentApiComponent } from './student-api/student-api.component';
 
 @NgModule({
   
   declarations: [ 
     WelcomeComponent,  
-    StarRatingComponent,
-    StarComponent
+    StudentApiComponent
   ],
   imports: [
     BrowserModule,
@@ -21,8 +18,7 @@ import { StarComponent } from './star-rating/star/star.component';
   providers: [],
   bootstrap: [
     WelcomeComponent,  
-    StarRatingComponent,
-    StarComponent
+    StudentApiComponent
   ]
 })
 export class AppModule { }
