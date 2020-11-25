@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import * as moment from 'moment';
+
 
 @Component({
   selector: 'app-welcome',
@@ -9,6 +11,7 @@ export class WelcomeComponent implements OnInit {
 
   message:string;
   name:string;
+  date;
   constructor() {}
 
   ngOnInit(): void {
@@ -19,5 +22,4 @@ export class WelcomeComponent implements OnInit {
   updateName() {
     this.name = 'John';
   }
-
 }

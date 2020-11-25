@@ -1,4 +1,4 @@
-export interface IStudentDTO {
+export interface IStudentAPI {
     id: number;
     name: string;
     rollNo: number;
