@@ -1,0 +1,51 @@
+<div class="container">
+    <div class="jumbotron">
+        <h1 class="display-4">Add Student Form</h1>
+    </div>
+
+    <form #addNewStudent='ngForm' (ngSubmit)='addStudent(addNewStudent); addNewStudent.reset()'>
+
+        <div class="form-group">
+            <label for="name">Name: </label>
+            <input type="text" id="name" class="form-control" placeholder="Enter Name" name="name" required ngModel #name="ngModel">
+            <span class="text-danger" *ngIf="name.touched && !name.valid">Please enter Student Name</span>
+
+        </div>
+
+        <div class="form-group">
+            <label for="rollNo">Roll No: </label>
+            <input type="text" id="rollNo" class="form-control" placeholder="Enter Roll No" name="rollNo" required ngModel #rollNo='ngModel'>
+            <span class="text-danger" *ngIf="rollNo.touched && !rollNo.valid">Please enter Student Roll No</span>
+        </div>
+
+        <div class="form-group">
+            <label for="age">Age: </label>
+            <input type="text" id="age" class="form-control"  placeholder="Enter Age" name="age" required ngModel #age="ngModel">
+            <span class="text-danger" *ngIf="age.touched && !age.valid">Please enter Student Age</span>
+
+        </div>
+
+        <div class="form-group">
+            <label for="email">Email: </label>
+            <input type="text" id="email" class="form-control"  placeholder="Enter Email ID" name="email" email required ngModel #email="ngModel">
+            <span class="text-danger" *ngIf="email.touched && !email.valid">Please enter valid Email ID</span>
+        </div>
+
+        <div class="form-group">
+            <label for="date">Date: </label>
+            <input type="date" id="date" class="form-control" name="date" required ngModel #date="ngModel">
+            <span class="text-danger" *ngIf="date.touched && !date.valid">Please enter valid Date</span>
+        </div>
+
+        <div class="form-group">
+            <label for="gender">Gender: &nbsp;</label>
+            <input type="radio" id="gender" name="gender" value="Male" required ngModel> Male
+            <input type="radio" id="gender" name="gender" value="Female" required ngModel> Female
+
+        </div>
+
+        <button type="submit" class="btn btn-outline-success" [disabled]="!addNewStudent.valid">Submit</button>
+        &nbsp;&nbsp;
+        <button class="btn btn-outline-secondary" [routerLink]="'/studentList'">Check Existing Students</button>
+    </form>
+</div>

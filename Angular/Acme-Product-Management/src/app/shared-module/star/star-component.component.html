@@ -1,0 +1,13 @@
+<div [ngStyle] = "{ 'width' : (14 * rating) + 'px', 'overflow' : 'hidden'}">
+
+    <div [style.width.px]="14 * maxRating">
+        <span class="glyphicon glyphicon-star"></span>
+        <span class="glyphicon glyphicon-star"></span>
+        <span class="glyphicon glyphicon-star"></span>
+        <span class="glyphicon glyphicon-star"></span>
+        <span class="glyphicon glyphicon-star"></span>
+    </div>
+    
+</div>
+
+<!-- [style.width.px]="14 * rating" [style.overflow]="'hidden'" -->

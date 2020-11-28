@@ -1,0 +1,37 @@
+<div class="card">
+    <h5 class="card-header" style="color:whitesmoke; background-color: #3a7eb5;">Product Details: <span></span></h5>
+    <div class="card-body">
+        <div class="container">
+
+            <!-- <p>Name:: </p>
+            <p [innerHtml] = 'product.productName'></p><br><br>
+            <p>Code:: </p>
+            <p [innerHtml] = 'product.productCode'></p><br>
+            <p>Description:: </p>
+            <p [innerHtml] = 'product.description'></p><br>
+            <p>Availability:: </p>
+            <p [innerHtml] = 'product.releaseDate'></p><br>
+            <p>Price:: </p>
+            <p [innerHtml] = 'product.price'></p><br>
+            <p>>5 Star Rating:: </p>
+            <p><app-star-component [rating]='product.starRating'></app-star-component></p> -->
+
+            <p class="card-text">Name:: {{product.productName}}</p>
+            <p class="card-text">Code:: {{product.productCode}}</p>
+            <p class="card-text">Description:: {{product.description}}</p>
+            <p class="card-text">Availability:: {{product.releaseDate}}</p>
+            <p class="card-text">Price:: {{product.price}}</p>
+            <p class="card-text">5 Star Rating:: </p>
+            <p id="star" app-star-component [rating]='product.starRating'></p>
+    
+        </div>
+
+        <div class="container" >
+            <img class="productImage" src="{{product.imageUrl}}" alt="Image Not Found" width="auto" style="float: right;">
+        </div>
+    </div>
+
+    <div class="card-footer">
+        <a class="btn btn-outline-secondary" [routerLink]="'/productList'">&laquo; Back</a>
+    </div>
+</div>

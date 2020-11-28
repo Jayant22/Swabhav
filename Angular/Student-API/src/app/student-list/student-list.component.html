@@ -1,0 +1,39 @@
+<div class="container">
+    <div class="jumbotron">
+        <h1 class="display-4">Student Details</h1>
+    </div>
+    <br>
+    <div>
+        <button class="btn btn-outline-primary" [routerLink]="'/studentForm'">Add new Student</button>
+    </div>
+    <br>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Roll No</th>
+                <th>Age</th>
+                <th>Email</th>
+                <th>Date</th>
+                <th>Gender</th>
+                <th>Update</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr *ngFor="let student of studentDetails">
+                <td [innerHtml]="student.id"></td>
+                <td [innerHtml]="student.name"></td>
+                <td [innerHtml]="student.rollNo"></td>
+                <td [innerHtml]="student.age"></td>
+                <td [innerHtml]="student.email"></td>
+                <td [innerHtml]="student.date"></td>
+                <td [innerHtml]="student.isMale"></td>
+                <td><a class="btn btn-outline-warning" (click)='saveStudentID(student.id)'>Update </a></td>
+                <td><a class="btn btn-outline-danger" (click)='deleteStudent(student.id)'>Delete</a></td>
+            </tr>
+        </tbody>
+    </table>
+</div>

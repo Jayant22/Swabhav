@@ -1,0 +1,37 @@
+
+<div class="card">
+    <h5 class="card-header" style="color:whitesmoke; background-color: #3a7eb5;">Product List</h5>
+    <div class="card-body">
+        <div class="form-group row">
+            <label for="filterProduct" [style.margin-left.rem] = "'2'">Filter By: </label>
+            <input type="text" class="form-control" id="filterProduct" [(ngModel)]="searchText" 
+                placeholder="Enter text to search">
+        </div>
+        <div>
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th> <button class="btn btn-primary" (click)='showAllImage()'>{{ btnValue }}</button> </th>
+                        <th>Product</th>
+                        <th>Code</th>
+                        <th>Available</th>
+                        <th>Price</th>
+                        <th>5 Star Rating</th>  
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let product of products | searchFilter: searchText">
+                        <td><img id='imgSize' [hidden]='showImage' [src]="product.imageUrl" alt=""></td>
+                        <td>
+                            <a class="nav-link" href="/productDetails" (click)='setProductID(product.productId)'>{{product.productName}}</a>
+                        </td>
+                        <td [innerHtml]='product.productCode'></td>
+                        <td [innerHtml]='product.releaseDate'></td>
+                        <td [innerHtml]='product.price'></td>
+                        <td><app-star-component [rating]='product.starRating'></app-star-component></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div> 
+    </div>
+</div>
