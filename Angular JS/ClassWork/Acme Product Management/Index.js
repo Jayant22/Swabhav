@@ -2,15 +2,15 @@ angular.module('AcmeApp', ['ngRoute','welcomeModule','productModule'])
     .config(function($routeProvider) {
 	$routeProvider
 		.when('/welcome', {
-			templateUrl: './Welcome.html',
+			templateUrl: './HTML/Welcome.html',
 			controller: 'welcomeController'
 		})
 		.when('/productlist', {
-			templateUrl: './ProductList.html',
+			templateUrl: './HTML/ProductList.html',
 			controller: 'productlistController'
         })
         .when('/productdetails', {
-            templateUrl: './ProductDetails.html',
+            templateUrl: './HTML/ProductDetails.html',
             controller: 'productdetailsController'
         })
 		.otherwise({
@@ -57,7 +57,7 @@ angular.module('productModule',[])
         console.log("Inside The Product List Controller");
         $scope.productVM = {
             btnValue : 'Show Image',
-            showImage : true,
+            showImage : false,
             products: []
         };
         $rootScope.globalProductVM = {  };
