@@ -1,0 +1,20 @@
+const Contacts = [
+    {
+        id : 1, 
+        name : "Jayant"
+    },
+    {
+        id : 2, 
+        name : "Paras"
+    },
+    {
+        id : 3, 
+        name : "Kaushik"
+    },
+    {
+        id : 4, 
+        name : "Shailesh"
+    }
+]
+
+module.exports = Contacts;

@@ -1,36 +1,16 @@
 <!DOCTYPE html>
 <html>
 <head>
-<script>
-function validateForm() {
-  var names = ['username', 'password',];
-  var errorCount = 0;
-  names.forEach(function(el) {
-    var val = document.forms["myForm"][el].value;
-    if (val == null || val == "") {
-      document.getElementById(el + '_error').textContent = el.toUpperCase().replace('_', ' ') + " must be filled out";
-      document.getElementById(el + '_error').style.color = "red";
-      ++errorCount;
-    }
-  });
-  if (errorCount) return false;
-  else return true;   
-}
-</script>
 </head>
 <body>
 <form action="auth.php" method="POST" name="myForm">
-<form name="myForm" action="/action_page.php" onsubmit="return validateForm()" method="post">
     <p>USERNAME:</p>
     <input type="text" name="username" value="">
-    <span class="error"><p id="username_error"></p></span>
   
     <p>PASSWORD:</p>
     <input type="password" name="password" value="">
-    <span class="error"><p id="password_error"></p></span>
     <br>
     <input type="submit" value="Submit">
 </form>
-
 </body>
 </html>

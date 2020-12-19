@@ -1,0 +1,1 @@
+app.get('/api/contacts', routeController.get)
