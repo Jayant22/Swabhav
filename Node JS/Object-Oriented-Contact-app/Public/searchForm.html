@@ -1,0 +1,61 @@
+<div class=" container">
+    <div class="jumbotron text-center">
+        <h1 class= "display-3 text-center">Search Contact Details</h1>
+    </div>
+</div>
+
+<div class="container">
+    <form>
+        <div class="row">
+            <div class="col-md-6">
+                Search By
+                <select class="form-control border border-primary" ng-model="columns" name="searchBy">
+                    <option value="">--Select--</option>
+                    <option ng-repeat="x in headers" value="{{x}}">{{x}}</option>
+                </select>
+            </div>
+            <div class="col-md-6">
+                Search <input class="form-control border border-primary" type="text" name="searchValue" ng-model="search[columns]" placeholder="Enter some text to search" />
+            </div>
+        </div>
+        <br>
+        <button class="btn btn-outline-primary" ng-click='searchContact()'>Submit</button>
+        <a href="#/contactlist" class="btn btn-outline-success">Check Existing Students</a>
+    </form>
+</div>
+
+<br>
+
+<div class="container">
+    <table id="contactTable" class="table table-borderless text-center">
+        <thead class="thead-dark">
+            <tr>
+                <th>Contact Image</th>
+                <th>Contact_ID</th>
+                <th>Name</th>
+                <th>Contact_NO</th>
+                <th>UPDATE</th>
+                <th>DELETE</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-if="isLoaded">
+                <td><img ng-src="data:{{searchedContact.imageSrc.contentType}};base64,{{ imgToString(searchedContact.imageSrc.imgData.data) }}" target="_blank" style="width: 6rem;height: 6rem;"></td>
+                <td>{{searchedContact._id}}</td>
+                <td>{{searchedContact.firstName }} {{ searchedContact.lastName}}</td>
+                <td>{{searchedContact.contact_No}}</td>
+                <td><a class="btn btn-outline-warning" href="javascript:void(0);" ng-click="updateDialog.open(searchedContact)" > 
+                    <i class="fa fa-pencil fa-lg" aria-hidden="true"></i> Update</a>
+                </td>
+                <td><a class="btn btn-outline-danger" href="javascript:void(0);" ng-click='deleteContact(searchedContact._id);'>
+                    <i class="fa fa-trash-o fa-lg" aria-hidden="true"></i> Delete</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <update-contact-dialog model = 'updateDialog'></update-contact-dialog>
+</div>
+
+
+

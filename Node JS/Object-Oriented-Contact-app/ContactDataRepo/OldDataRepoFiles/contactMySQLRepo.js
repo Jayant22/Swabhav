@@ -54,3 +54,18 @@ module.exports = class mySQLRepoClass{
         })
     }
 }
+
+// getById(serachObj){
+//     let id = searchObj.id;
+//     let value = 
+//     let connect = this.connection;
+//     return new Promise(function(resolve, reject){
+//         connect.query("SELECT * FROM Contacts WHERE ? = ?", [id,value], function(error, results) {
+//             if (error)  throw error;
+//             if(results === undefined)
+//                 reject(new Error("Error result is undefined"));
+//             else
+//                 resolve(JSON.stringify(results));
+//         });                                                
+//     })
+// }

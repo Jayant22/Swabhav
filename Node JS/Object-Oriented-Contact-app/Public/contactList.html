@@ -1,0 +1,54 @@
+<div class="container-fluid">
+    <div class="jumbotron text-center">
+        <h1 class= "display-3">Contact List Details</h1>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+    
+        <div class="col-md-6">
+            <a class="btn btn-outline-dark btn-block" href="#/contactForm">
+                <i class="fa fa-plus-square fa-lg" aria-hidden="true"></i>&nbsp;Add New Contact</a>
+        </div>
+        <div class="col-md-6">
+            <a class="btn btn-outline-dark btn-block" href="#/searchForm">
+                <i class="fa fa-search fa-lg" aria-hidden="true"></i>  Search Contact</a>
+        </div>
+    
+    </div>
+</div>
+
+<br>
+
+<div class="container">
+    <table id="contactTable" class="table table-borderless text-center">
+        <thead class="thead-dark">
+            <tr>
+                <!-- <th>Contact Image</th> -->
+                <th>Contact_ID</th>
+                <th>Name</th>
+                <th>Contact_NO</th>
+                <th>UPDATE</th>
+                <th>DELETE</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="contact in Contacts">
+                <!-- <td><img ng-src="data:{{contact.imageSrc.contentType}};base64,{{ imgToString(contact.imageSrc.imgData.data) }}" style="width: 6rem;height: 6rem;"></td> -->
+                <td>{{contact._id}}</td>
+                <td><a href="#/contactDetails/{{ contact._id }}">{{contact.firstName }} {{ contact.lastName}}</a></td>
+                <td>{{contact.contact_No}}</td>
+                <td><a class="btn btn-outline-warning" href="javascript:void(0);" ng-click="updateDialog.open(contact)" > 
+                    <i class="fa fa-pencil fa-lg" aria-hidden="true"></i> Update</a>
+                </td>
+                <td><a class="btn btn-outline-danger" href="javascript:void(0);" ng-click='deleteContact(contact._id);'>
+                    <i class="fa fa-trash-o fa-lg" aria-hidden="true"></i> Delete</a>
+                </td>
+            </tr>    
+        </tbody>
+    </table>
+    
+    <update-contact-dialog model = 'updateDialog'></update-contact-dialog>
+
+</div>

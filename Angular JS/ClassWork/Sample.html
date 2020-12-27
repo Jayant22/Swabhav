@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+  <title>Document</title>
+</head>
+<body ng-app="plunkr"> 
+  <div ng-controller="UploadController ">
+    <div class="form-group">
+        <div>
+            <label for="usr">User Name:</label>
+            <input type="text" id="usr" ng-model="model.username">
+        </div>
+        <div>
+            <label for="pwd">Password:</label>
+            <input type="password" id="pwd" ng-model="model.password">
+        </div><hr>
+        <div>
+            <div class="col-lg-6">
+                <input type="file" class="form-control" id="fileId" accept="image/*" myFilesfile-model="($files)"/>
+            </div>
+        </div>
+        <div>
+            <label for="dob">Dob:</label>
+            <input type="date" id="dob" ng-model="model.dob">
+        </div>
+        <div>
+            <label for="email">Email:</label>
+            <input type="email"id="email" ng-model="model.email">
+        </div>
+
+
+        <button type="submit" ng-click="saveData(model)" >Submit</button>   
+  </div>
+
+  <script>
+    app = angular.module('plunkr', []);
+
+    app.directive('fileModel', ['$parse', function($parse) {
+        function fn_link(scope, element, attrs) {
+            var onChange = $parse(attrs.fileModel);
+            element.on('change', function (event) {
+                onChange(scope, { $files: event.target.files });
+            });
+        };
+        return {
+            link: fn_link
+        }
+    }])
+    
+    // app.service('fileUploadService', ['$http', function ($http) {
+    //     this.uploadFileToUrl = function(file, username, password, dob, email, uploadUrl){
+    //         var myFormData = new FormData();
+
+    //         myFormData.append('file', file);
+    //         myFormData.append('username', username);
+    //         myFormData.append('password', password);
+    //         myFormData.append('dob', dob);
+    //         myFormData.append('email', email);
+
+    //         for (var pair of myFormData.entries()) {
+    //             console.log(pair[0]+ ', ' + pair[1]); 
+    //         }
+
+    //     }
+    // }]);
+    app.controller('UploadController', function($scope) {
+
+        var formData = new FormData();
+        $scope.myFiles = function($files) {
+            console.log($files[0]);
+            formData.append('img', $files[0]);
+        }
+
+        $scope.saveData  = function(model){
+            formData.append('username', model.username);
+            formData.append('password', model.password);
+            formData.append('dob', model.dob);
+            formData.append('email', model.email);
+
+            for (var pair of formData.entries()) {
+                console.log(pair[0]+ ', ' + pair[1]); 
+            }
+        };
+  });
+  </script>
+</body>
+</html>

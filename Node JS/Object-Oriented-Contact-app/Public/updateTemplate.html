@@ -1,0 +1,193 @@
+<div class="container">  
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Update Contact</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form action="/api/contacts/update" method="POST" enctype="multipart/form-data">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="card">
+                                    <div class="card-header">Contact Profile Picture</div>
+                                    <div class="card-body text-center" ng-if = "model.visible">
+                                        <img class="rounded-circle mb-5" 
+                                            ng-src="data:{{model.contact.imageSrc.contentType}};base64,{{ imgToString(model.contact.imageSrc.imgData.data) }}" 
+                                            width="300" height="300">
+                                        
+                                        <div class="form-group">
+                                            <input type="file" name="imageSrc" ng-model="model.contact.imageSrc.imgData.data" class="form-control btn btn-outline-dark" accept="image/*" />
+                                        </div>    
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-8">
+                                <div class="card mb-4">
+                                    <div class="card-header">Contact Details</div>
+                                    <div class="card-body">
+                                        <div class="form-group">
+                                            <label for="contactNo">Contact Id </label>
+                                            <input type="text" name="_id" ng-model="model.contact._id" class="form-control" ng-readonly='isreadOnly'>
+                                        </div>
+
+                                        <div class="form-row">
+                                            <div class="form-group col-md-6">
+                                                <label for="firstName">First Name</label>
+                                                <input type="text" name="firstName" ng-model="model.contact.firstName" class="form-control" id="firstName" placeholder="Enter the First Name">
+                                            </div>
+                                            <div class="form-group col-md-6">
+                                                <label for="lastName">Last Name</label>
+                                                <input type="text" name="lastName" ng-model="model.contact.lastName" class="form-control" id="lastName" placeholder="Enter the Last Name">
+                                            </div>
+                                        </div>
+                                
+                                        <div class="form-group">
+                                            <label for="contactNo">Contact No </label>
+                                            <input type="text" name="Contact_No" ng-model="model.contact.contact_No" class="form-control" id="contactNo"  placeholder="Enter the Contact Number" >
+                                        </div>
+                                
+                                        <div class="form-group">
+                                            <label for="contactNo">Permanent Address </label>
+                                        </div>
+                                
+                                        <div class="form-row">
+                                            <div class="form-group col-md-6">
+                                                <input type="text" name="permanentBuilding" ng-model="model.contact.address.permanent.building"  class="form-control" id="inputAddress" placeholder="Building Name">
+                                            </div>
+                                            <div class="form-group col-md-6">
+                                                <input type="text" name="permanentStreet" ng-model="model.contact.address.permanent.street" class="form-control" id="inputAddress2" placeholder="Street Colony etc">
+                                            </div>
+                                        </div>
+                                
+                                        <div class="form-group">
+                                            <div class="form-check">
+                                                <input class="form-check-input" ng-change="click()" ng-model="sameasabove" type="checkbox" id="gridCheck" >
+                                                <label class="form-check-label" for="gridCheck">
+                                                Correspondence Same As Permanent
+                                                </label>
+                                            </div>
+                                            </div>
+                                    
+                                        <div class="form-group">
+                                            <label for="inputAddress2">Correspondence Address </label>
+                                        </div>
+                                
+                                        <div class="form-row">
+                                            <div class="form-group col-md-6">
+                                                <input type="text" name="correspondenceBuilding" ng-model="model.contact.address.correspondence.building" class="form-control" id="inputAddress3" placeholder="1234 Main St">
+                                            </div>
+                                            <div class="form-group col-md-6">
+                                                <input type="text" name="correspondenceStreet" ng-model="model.contact.address.correspondence.street" class="form-control" id="inputAddress4" placeholder="Apartment, studio, or floor">
+                                            </div>
+                                        </div>
+                                
+                                        <div class="form-row">
+                                            <div class="form-group col-md-4">
+                                                <label for="inputCity">City</label>
+                                                <input type="text" name="city" ng-model="model.contact.address.city" class="form-control" id="inputCity">
+                                            </div>
+                                            
+                                            <div class="form-group col-md-6">
+                                                <label for="inputState">State</label>
+                                                <select id="inputState" name="state" ng-model="model.contact.address.state" class="form-control">
+                                                    <option value="">------------Select State------------</option>
+                                                    <option ng-repeat="state in states" value="{{ state }}">{{ state }}</option>
+                                                </select>
+                                            </div>
+                                            
+                                            <div class="form-group col-md-2">
+                                                <label for="inputZip">Zip</label>
+                                                <input type="text" name="zip" ng-model="model.contact.address.zip" class="form-control" id="inputZip">
+                                            </div>
+                                        </div>
+                                
+                                        <!-- <div class="form-group">
+                                            <input type="file" name="imageSrc" class="form-control" id="imageFile">
+                                        </div> -->
+                                        <button type ="submit" class="btn btn-outline-primary">Save Changes</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>  
+</div>
+
+
+<!-- <div class="form-row">
+    <div class="form-group col-md-6">
+        <label for="firstName">First Name</label>
+        <input type="text" ng-model="model.contact.firstName" class="form-control" id="firstName" placeholder="Enter the First Name">
+    </div>
+    <div class="form-group col-md-6">
+        <label for="lastName">Last Name</label>
+        <input type="text" ng-model="model.contact.lastName" class="form-control" id="lastName" placeholder="Enter the Last Name">
+    </div>
+</div>
+
+<div class="form-group">
+    <label for="contactNo">Contact No </label>
+    <input type="text" id="contactNo" ng-model="model.contact.contact_No" placeholder="Enter the Contact Number" class="form-control">
+</div>
+
+<div class="form-group">
+    <label for="contactAddress">Permanent Address </label>
+</div>
+
+<div class="form-row">
+    <div class="form-group col-md-6">
+        <input type="text" ng-model="model.contact.address.permanent.building"  class="form-control" id="inputAddress" placeholder="Building Name">
+    </div>
+    <div class="form-group col-md-6">
+        <input type="text" ng-model="model.contact.address.permanent.street" class="form-control" id="inputAddress2" placeholder="Street Colony etc">
+    </div>
+</div>
+
+<div class="form-group">
+    <div class="form-check">
+        <input class="form-check-input" ng-change="click()" ng-model="sameasabove" type="checkbox" id="gridCheck" >
+        <label class="form-check-label" for="gridCheck">
+            Correspondence Same As Permanent
+        </label>
+    </div>
+    </div>
+
+<div class="form-group">
+    <label for="inputAddress2">Correspondence Address </label>
+</div>
+
+<div class="form-row">
+    <div class="form-group col-md-6">
+        <input type="text" ng-model="model.contact.address.correspondence.building" class="form-control" id="inputAddress" placeholder="1234 Main St">
+    </div>
+    <div class="form-group col-md-6">
+        <input type="text" ng-model="model.contact.address.correspondence.street" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
+    </div>
+</div>
+
+<div class="form-row">
+    <div class="form-group col-md-4">
+        <label for="inputCity">City</label>
+        <input type="text" ng-model="model.contact.address.city" class="form-control" id="inputCity">
+    </div>
+    
+    <div class="form-group col-md-6">
+        <label for="inputState">State</label>
+        <select id="inputState" ng-model="model.contact.address.state" class="form-control">
+            <option value="">------------Select State------------</option>
+            <option ng-repeat="state in states" value="{{ state }}">{{ state }}</option>
+        </select>
+    </div>
+    
+    <div class="form-group col-md-2">
+        <label for="inputZip">Zip</label>
+        <input type="text" ng-model="model.contact.address.zip" class="form-control" id="inputZip">
+    </div>
+</div> -->

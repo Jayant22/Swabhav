@@ -29,6 +29,6 @@ app.post("/auth.pug", (req, res) => {
     res.send(responseFile);
 });
 
-app.listen(5000, function () {
-  console.log("Example app listening on port http://localhost:5000/");
+app.listen(3000, function () {
+  console.log("Example app listening on port http://localhost:3000/");
 });

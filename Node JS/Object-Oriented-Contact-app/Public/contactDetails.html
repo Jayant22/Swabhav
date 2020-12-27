@@ -1,0 +1,79 @@
+<div class="container-fluid">
+    <div class="jumbotron text-center">
+        <h1 class= "display-3 text-center">Contact Details</h1>
+    </div>
+</div>
+
+<div class="container mt-4" ng-if="isLoaded">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-header">Profile Picture</div>
+                <div class="card-body text-center">
+                    <img class="rounded-circle mb-5" 
+                        ng-src="data:{{searchedContact.imageSrc.contentType}};base64,{{ imgToString(searchedContact.imageSrc.imgData.data) }}" 
+                        width="300" height="300">
+                </div>
+            </div>
+        </div>
+        <div class="col-md-8">
+            <div class="card mb-4">
+                <div class="card-header">Account Details</div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label>Contact_ID</label>
+                        </div>
+                        <div class="col-md-6">
+                            <h5>{{searchedContact._id}}</h5>
+                        </div>
+                    </div><br/>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label>Contact Name</label>
+                        </div>
+                        <div class="col-md-6">
+                            <p>{{searchedContact.firstName }} {{ searchedContact.lastName}}</p>
+                        </div>
+                    </div><br/>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label>Contact_NO</label>
+                        </div>
+                        <div class="col-md-6">
+                            <p>{{searchedContact.contact_No}}</p>
+                        </div>
+                    </div><br/>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label>Permanent Address</label>
+                        </div>
+                        <div class="col-md-6">
+                            <address>
+                                {{ searchedContact.address.permanent.building }},  {{ searchedContact.address.permanent.street }}<br>
+                                {{ searchedContact.address.city }},  {{ searchedContact.address.state }},  {{ searchedContact.address.zip }}
+                            </address>
+                        </div>
+                    </div><br/>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label>Correspondence Address</label>
+                        </div>
+                        <div class="col-md-6">
+                            <address>
+                                {{ searchedContact.address.correspondence.building }},  {{ searchedContact.address.correspondence.street }}<br>
+                                {{ searchedContact.address.city }},  {{ searchedContact.address.state }},  {{ searchedContact.address.zip }}
+                            </address>
+                        </div>
+                    </div><br/>
+                    <div class="row col-md-6">
+                        <a class="btn btn-outline-warning " href="javascript:void(0);" ng-click="updateDialog.open(searchedContact)" style="margin-right: 10px;"> 
+                            <i class="fa fa-pencil fa-lg" aria-hidden="true"></i> Update</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> 
+
+    <update-contact-dialog model = 'updateDialog'></update-contact-dialog>
+</div>

@@ -1,17 +1,109 @@
-app.directive('customwidth', function() {
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+  <title>Document</title>
+  <style>
+    img{width:200px; height:200px;}
+  </style>
+</head>
+<body ng-app="plunkr"> 
+  <div ng-controller="UploadController ">
+    <form>
+      <input type="file" ng-file-select="onFileSelect($files)" ng-model="imageSrc">
+      <!--  <input type="file" ng-file-select="onFileSelect($files)" multiple> -->
+    </form>
+
+    <p>{{imageSrc}}</p>
+
+    <img ng-src="{{imageSrc}}" />   
+  </div>
+
+  <script>
+    app = angular.module('plunkr', [])
+  app.controller('UploadController', function($scope, fileReader) {
+    $scope.imageSrc = "";
+
+    console.log($scope.imageSrc);
+    
+    $scope.$on("fileProgress", function(e, progress) {
+      $scope.progress = progress.loaded / progress.total;
+    });
+  });
+
+  app.directive("ngFileSelect", function(fileReader, $timeout) {
     return {
-      restrict: 'A',
-      require: '^ngWidth',
       scope: {
-        ngRate: '@'
+        ngModel: '='
       },
-      template: 'style="width:{{ calWidth }} + px"',
-      controller: ['$scope', '$http', function($scope, $http) {
-        $scope.setWidth = function(rate) {
-          scope.calWidth = 14 * 
-      }],
-      link: function(scope, iElement, iAttrs, ctrl) {
-        scope.setWidth(iAttrs.ngRate);
+      link: function($scope, el) {
+        function getFile(file) {
+          fileReader.readAsDataUrl(file, $scope)
+            .then(function(result) {
+              $timeout(function() {
+                console.log(result);
+                $scope.ngModel = result;
+              });
+            });
+        }
+
+        el.bind("change", function(e) {
+          var file = (e.srcElement || e.target).files[0];
+          getFile(file);
+        });
       }
-    }
+    };
+  });
+
+app.factory("fileReader", function($q, $log) {
+  var onLoad = function(reader, deferred, scope) {
+    return function() {
+      scope.$apply(function() {
+        deferred.resolve(reader.result);
+      });
+    };
+  };
+
+  var onError = function(reader, deferred, scope) {
+    return function() {
+      scope.$apply(function() {
+        deferred.reject(reader.result);
+      });
+    };
+  };
+
+  var onProgress = function(reader, scope) {
+    return function(event) {
+      scope.$broadcast("fileProgress", {
+        total: event.total,
+        loaded: event.loaded
+      });
+    };
+  };
+
+  var getReader = function(deferred, scope) {
+    var reader = new FileReader();
+    reader.onload = onLoad(reader, deferred, scope);
+    reader.onerror = onError(reader, deferred, scope);
+    reader.onprogress = onProgress(reader, scope);
+    return reader;
+  };
+
+  var readAsDataURL = function(file, scope) {
+    var deferred = $q.defer();
+
+    var reader = getReader(deferred, scope);
+    reader.readAsDataURL(file);
+
+    return deferred.promise;
+  };
+
+  return {
+    readAsDataUrl: readAsDataURL
+  };
 });
+  </script>
+</body>
+</html>

@@ -142,6 +142,7 @@ StudentsApp.controller('studentsApiController', ['$scope', '$rootScope', '$locat
         }
     }
 }]);
+
 studentsApp.controller('addNewStudentController', ['$scope', 'addNewStudentInfo', function($scope, addNewStudentInfo) {
     $scope.addStudent = function() {
         $scope.gender = (($scope.gender == 'Male' ? true : false));
@@ -166,18 +167,3 @@ studentsApp.controller('updateStudentController', ['$scope', '$rootScope', 'upda
         }
     }
 ]);
-
-// AcmeProductApp.service('getProductList', function($http, url) {
-//     this.productList = function() {
-
-//         $http({
-//             method: 'get',
-//             url: url,
-//         })
-//         .then(function(response) {  
-//             console.log(response.data);
-//             return (response.data);
-//         });
-      
-//     }
-//  });
