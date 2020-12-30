@@ -1,8 +1,5 @@
 const ContactService = require("../Services/contactService");
 var fs = require('fs');
-let Busboy = require('busboy');
-const { resolve } = require("path");
-const { reject } = require("underscore");
 const { Buffer } = require("buffer");
 
 module.exports = class contactController{
@@ -103,33 +100,12 @@ module.exports = class contactController{
 	 */
 
 	addContact = (req, res) => {
-		let contact = {
-			firstName: req.body.firstName,
-			lastName: req.body.lastName,
-			address: {
-				permanent: {
-					building: req.body.permanentBuilding,
-					street: req.body.permanentStreet
-				},
-				correspondence: {
-					building: req.body.correspondenceBuilding,
-					street: req.body.correspondenceStreet
-				},
-				city: req.body.city,
-				state: req.body.state,
-				zip: req.body.zip
-			},
-			imageSrc: {
-				imgData: new Buffer.from(fs.readFileSync(req.file.path).toString('base64'), 'base64') ,
-				contentType: req.file.mimetype 
-			},
-			contact_No: req.body.Contact_No
-		}
-	    this.contactService.addContactToList(contact).then(insertionResult => {
+		console.log(req.body);
+	    this.contactService.addContactToList(req.body).then(insertionResult => {
 			console.log(
 				`1 documents were inserted with the _id: ${insertionResult._id}`,   
 			);
-			res.redirect('/');
+			res.status(200).json(req.body);
 		}).catch(err => {
 			console.log("Promise rejection error: "+err);
 			res.status(404).send(err);   
@@ -137,44 +113,46 @@ module.exports = class contactController{
 	}
 
 	updateContact = async (req, res) => {
-		let imageData,imgType;
-		if (req.file == undefined) {
-			await this.contactService.searchContactFromList({ _id: req.body._id }).then(function(contact){
-				imageData = contact[0].imageSrc.imgData;
-				imgType = contact[0].imageSrc.contentType;
-			});
-		}else{
-			imageData = new Buffer.from(fs.readFileSync(req.file.path).toString('base64'), 'base64');
-			imgType = req.file.mimetype;
-		}	
-		let contact = {
-			firstName: req.body.firstName,
-			lastName: req.body.lastName,
-			address: {
-				permanent: {
-					building: req.body.permanentBuilding,
-					street: req.body.permanentStreet
-				},
-				correspondence: {
-					building: req.body.correspondenceBuilding,
-					street: req.body.correspondenceStreet
-				},
-				city: req.body.city,
-				state: req.body.state,
-				zip: req.body.zip
-			},
-			imageSrc: {
-				imgData: imageData,
-				contentType: imgType
-			},
-			contact_No: req.body.Contact_No
-		}
-		console.log(contact);
-	    this.contactService.updateContactInList(req.body._id, contact).then(updataionResult => {
+		// let imageData,imgType;
+		// if (req.file == undefined) {
+		// 	await this.contactService.searchContactFromList({ _id: req.body._id }).then(function(contact){
+		// 		imageData = contact[0].imageSrc.imgData;
+		// 		imgType = contact[0].imageSrc.contentType;
+		// 	});
+		// }else{
+		// 	imageData = new Buffer.from(fs.readFileSync(req.file.path).toString('base64'), 'base64');
+		// 	imgType = req.file.mimetype;
+		// }	
+		// let contact = {
+		// 	firstName: req.body.firstName,
+		// 	lastName: req.body.lastName,
+		// 	address: {
+		// 		permanent: {
+		// 			building: req.body.permanentBuilding,
+		// 			street: req.body.permanentStreet
+		// 		},
+		// 		correspondence: {
+		// 			building: req.body.correspondenceBuilding,
+		// 			street: req.body.correspondenceStreet
+		// 		},
+		// 		city: req.body.city,
+		// 		state: req.body.state,
+		// 		zip: req.body.zip
+		// 	},
+		// 	imageSrc: {
+		// 		imgData: imageData,
+		// 		contentType: imgType
+		// 	},
+		// 	contact_No: req.body.Contact_No
+		// }
+		console.log(req.body);
+		let id = req.body._id;
+    	delete req.body._id;
+	    this.contactService.updateContactInList(id, req.body).then(updataionResult => {
 			console.log(
 				`${updataionResult.nModified} documents were Updated`,   
 			);
-			res.redirect('/');
+			res.status(200 ).json(req.body);
 		}).catch(err => {
 			console.log("Promise rejection error: "+err);
 			res.status(404).send(err);   
@@ -202,4 +180,23 @@ module.exports = class contactController{
 			res.status(404).send(err);   
 		});    
 	}
+
+	processRequest = (req, res, next) => {
+		delete req.body.file;
+		for (let property in req.body) {
+		  	req.body[property] = JSON.parse(req.body[property]);
+		}
+		delete req.body.$$hashKey;
+		next();
+	};
+	
+	processImage = (req, res, next) => {
+		if (req.file) {
+			req.body.imageSrc = {
+				imgData: new Buffer.from(fs.readFileSync(req.file.path).toString('base64'), 'base64'),
+				contentType: req.file.mimetype,
+			};
+		}
+		next();
+	};
 }

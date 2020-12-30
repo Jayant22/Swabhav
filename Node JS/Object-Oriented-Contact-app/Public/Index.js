@@ -48,7 +48,34 @@ angular.module('contactApp', ['ngRoute', 'contactModule'])
         return getContactList;
     }])
 
-    .factory('deleteContactInfo', ['$location', '$http', 'url', function(_$location, $http, _url) {
+    .factory('addContactInfo', ['$http', function($http) {
+
+        var addContactInfo = {};
+
+        addContactInfo.addDetails = function(contact) {
+            return $http.post("/api/contacts/add", contact, {
+                transformRequest: angular.identity,
+                headers: { "Content-Type": undefined },
+            });
+        }
+        return addContactInfo;
+    }])
+
+    .factory('updateContactInfo', ['$http', function($http) {
+
+        var updateInfo = {};
+        
+        updateInfo.updateDetails = function(contact) {
+            console.log(contact.get('file'));
+            return $http.post('/api/contacts/update', contact, {
+                transformRequest: angular.identity,
+                headers: { "Content-Type": undefined },
+            });
+        }
+        return updateInfo;
+    }])
+
+    .factory('deleteContactInfo', ['$location', '$http', 'url', function($location, $http, _url) {
 
         var deleteInfo = {};
         
@@ -59,7 +86,7 @@ angular.module('contactApp', ['ngRoute', 'contactModule'])
         return deleteInfo;
     }])
 
-    .factory('searchContactInfo', ['$location', '$http', 'url', function(_$location, $http, _url) {
+    .factory('searchContactInfo', ['$location', '$http', 'url', function($location, $http, _url) {
 
         var searchInfo = {};
         searchInfo.searchDetails = function(contact) {
@@ -142,6 +169,24 @@ angular.module('contactApp', ['ngRoute', 'contactModule'])
         };
     }])
 
+    .directive("fileModel", [
+        "$parse",
+        function ($parse) {
+            return {
+                restrict: "A",
+                link: function (scope, element, attrs) {
+                    var model = $parse(attrs.fileModel);
+                    var modelSetter = model.assign;
+                    element.bind("change", function () {
+                        scope.$apply(function () {
+                            modelSetter(scope, element[0].files[0]);
+                        });
+                    });
+                },
+            };
+        },
+    ]);
+
 angular.module('contactModule',[])
 
     .controller('contactListController', ['$scope', '$rootScope', 'getContactList', 'deleteContactInfo', 'searchContactInfo', 'stateService', '$http', function($scope, $rootScope, getContactList, deleteContactInfo, searchContactInfo, stateService) {
@@ -197,23 +242,34 @@ angular.module('contactModule',[])
         }
     }])
 
-    .controller('contactFormController', ['$scope', 'stateService', function($scope, stateService) {
+    .controller('contactFormController', ['$scope', '$location', 'addContactInfo', 'stateService', function($scope, $location, addContactInfo, stateService) {
 
         $scope.states = stateService.states;
+        
+        $scope.addContact = function(contact){
+            let form = new FormData();
+            for (property in contact) {
+                form.append(property, JSON.stringify(contact[property]));
+                console.log(form.get(property));
+            }
+            form.append("file", contact.file);
+            addContactInfo.addDetails(form).then((response) => {
+                $location.path('/contactList');
+            });
+        };
 
         $scope.click = function(){    
             if($scope.sameasabove){
-                $scope.address.correspondence = angular.copy($scope.address.permanent);
-                console.log('C',$scope.address.correspondence,'P',$scope.address.permanent);
+                $scope.contact.address.correspondence = angular.copy($scope.contact.address.permanent);
             } else {
-                $scope.address.correspondence = {};
+                $scope.contact.address.correspondence = {};
             }
         };
 
     }])
 
     .controller('contactDetailsController', ['$scope', '$routeParams', 'searchContactInfo', function($scope, $routeParams, searchContactInfo) {
-       
+
         $scope.contact_id = $routeParams.contact_id;
         $scope.isLoaded = false;
 
@@ -233,15 +289,25 @@ angular.module('contactModule',[])
         }
     }])
 
-    .controller('updateTemplateController',['$scope', 'stateService', function($scope, stateService){
+    .controller('updateTemplateController',['$scope', '$window', 'updateContactInfo', 'stateService', function($scope, $window, updateContactInfo, stateService){
         $scope.states = stateService.states;
-        $scope.isreadOnly = true;
         $scope.updateDialog = new ContactDialogModel();
+
+        $scope.updateContact = function(contact){
+            let form = new FormData();
+            form.append("file", contact.file);   
+
+            for (property in contact) 
+                form.append(property, JSON.stringify(contact[property]));
+            
+            updateContactInfo.updateDetails(form).then((response) => {
+                $window.location.reload();
+            });
+        };
     
         $scope.click = function(){    
             if($scope.sameasabove){
                 $scope.model.contact.address.correspondence = angular.copy($scope.model.contact.address.permanent);
-                console.log('C',$scope.model.contact.address.correspondence,'P',$scope.model.contact.address.permanent);
             } else {
                 $scope.model.contact.address.correspondence = {};
             }

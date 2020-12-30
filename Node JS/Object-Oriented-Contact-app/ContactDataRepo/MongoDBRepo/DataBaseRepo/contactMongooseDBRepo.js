@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-let Contact = require("./contactSchema");
+let Contact = require("../Models/contactSchema");
 const uri = "mongodb+srv://root:Root@cluster0.caila.mongodb.net/ContactDB?retryWrites=true&w=majority";
 
 module.exports = class mongoDBRepoClass {

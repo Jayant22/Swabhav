@@ -5,97 +5,15 @@
 </div>
 
 <div class="container">
-    <form action="/api/contacts/add" method="POST" enctype="multipart/form-data">
+    <form>
         <div class="form-row">
             <div class="form-group col-md-6">
                 <label for="firstName">First Name</label>
-                <input type="text" name="firstName" class="form-control" id="firstName" placeholder="Enter the First Name">
+                <input type="text" ng-model="contact.firstName" class="form-control" id="firstName" placeholder="Enter the First Name">
             </div>
             <div class="form-group col-md-6">
                 <label for="lastName">Last Name</label>
-                <input type="text" name="lastName" class="form-control" id="lastName" placeholder="Enter the Last Name">
-            </div>
-        </div>
-
-        <div class="form-group">
-            <label for="contactNo">Contact No </label>
-            <input type="text" name="Contact_No" class="form-control" id="contactNo"  placeholder="Enter the Contact Number" >
-        </div>
-
-        <div class="form-group">
-            <label for="contactNo">Permanent Address </label>
-        </div>
-
-        <div class="form-row">
-            <div class="form-group col-md-6">
-                <input type="text" name="permanentBuilding" ng-model="address.permanent.building"  class="form-control" id="inputAddress" placeholder="Building Name">
-            </div>
-            <div class="form-group col-md-6">
-                <input type="text" name="permanentStreet" ng-model="address.permanent.street" class="form-control" id="inputAddress2" placeholder="Street Colony etc">
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div class="form-check">
-              <input class="form-check-input" ng-change="click()" ng-model="sameasabove" type="checkbox" id="gridCheck" >
-              <label class="form-check-label" for="gridCheck">
-                Correspondence Same As Permanent
-              </label>
-            </div>
-          </div>
- 
-        <div class="form-group">
-            <label for="inputAddress2">Correspondence Address </label>
-        </div>
-
-        <div class="form-row">
-            <div class="form-group col-md-6">
-                <input type="text" name="correspondenceBuilding" ng-model="address.correspondence.building" class="form-control" id="inputAddress" placeholder="1234 Main St">
-            </div>
-            <div class="form-group col-md-6">
-                <input type="text" name="correspondenceStreet" ng-model="address.correspondence.street" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
-            </div>
-        </div>
-
-        <div class="form-row">
-            <div class="form-group col-md-4">
-                <label for="inputCity">City</label>
-                <input type="text" name="city" class="form-control" id="inputCity">
-            </div>
-            
-            <div class="form-group col-md-6">
-                <label for="inputState">State</label>
-                <select id="inputState" name="state" class="form-control">
-                    <option value="">------------Select State------------</option>
-                    <option ng-repeat="state in states" value="{{ state }}">{{ state }}</option>
-                </select>
-            </div>
-            
-            <div class="form-group col-md-2">
-                <label for="inputZip">Zip</label>
-                <input type="text" name="zip" class="form-control" id="inputZip">
-            </div>
-        </div>
-
-        <div class="form-group">
-            <input type="file" name="imageSrc" class="form-control btn btn-outline-dark" accept="image/*" />
-        </div>
-        <button type ="submit" class="btn btn-outline-primary">Submit</button>
-        <a href="#/contactlist" class="btn btn-outline-success">Check Existing Students</a>
-    </form>
-    
-</div>
-
-<!-- <div class="container">
-    <form >
-        <div class="form-row">
-            <div class="form-group col-md-6">
-                <label for="firstName">First Name</label>
-                <input type="text" ng-model="contact.name.firstName" class="form-control" id="firstName" placeholder="Enter the First Name">
-            </div>
-            <div class="form-group col-md-6">
-                <label for="lastName">Last Name</label>
-                <input type="text" ng-model="contact.name.lastName" class="form-control" id="lastName" placeholder="Enter the Last Name">
+                <input type="text" ng-model="contact.lastName" class="form-control" id="lastName" placeholder="Enter the Last Name">
             </div>
         </div>
 
@@ -119,13 +37,13 @@
 
         <div class="form-group">
             <div class="form-check">
-              <input class="form-check-input" ng-change="click()" ng-model="sameasabove" type="checkbox" id="gridCheck" >
-              <label class="form-check-label" for="gridCheck">
-                Correspondence Same As Permanent
-              </label>
+                <input class="form-check-input" ng-change="click()" ng-model="sameasabove" type="checkbox" id="gridCheck" >
+                <label class="form-check-label" for="gridCheck">
+                    Correspondence Same As Permanent
+                </label>
             </div>
-          </div>
- 
+        </div>
+        
         <div class="form-group">
             <label for="inputAddress2">Correspondence Address </label>
         </div>
@@ -160,11 +78,12 @@
         </div>
 
         <div class="form-group">
-            <input type="file" ng-file-select="onFileSelect($files)" ng-model="contact.imgData">
+            <label for="exampleFormControlFile1">File Upload</label>
+            <input file-model="contact.file" type="file" class="form-control-file" id="exampleFormControlFile1" accept="image/*">
         </div>
         
-        <button class="btn btn-outline-primary" ng-click='addContact()'>Submit</button>
+        <button type="submit" class="btn btn-outline-primary" ng-click='addContact(contact)'>Submit</button>
         <a href="#/contactlist" class="btn btn-outline-success">Check Existing Students</a>
     </form>
     
-</div> -->
+</div>

@@ -4,9 +4,10 @@ const express = require("express"),
       multer = require('multer'),
       swaggerUI = require("swagger-ui-express"),
       path = require('path'),
-      controller = require('./Controllers/contactController');
+      ContactController = require('./Controllers/contactController'),
+      UserController = require('./Controllers/userController');
 
-const contactCtrl = new controller();
+const contactCtrl = new ContactController();
 const app = express();
 
 app.use(bodyParser.json({limit: '1mb'}));
@@ -48,13 +49,13 @@ app.get('/api/contacts', contactCtrl.getContacts);
 
 app.get('/api/contact/:id', contactCtrl.getContactById);
 
-app.post('/api/contacts/add', upload.single('imageSrc'), contactCtrl.addContact); 
+app.post('/api/contacts/add', upload.single('file'), contactCtrl.processRequest, contactCtrl.processImage, contactCtrl.addContact); 
 
 app.get('/api/contact', contactCtrl.searchContact);
 
 app.delete('/api/contacts/delete', contactCtrl.deleteContact);
 
-app.post('/api/contacts/update', upload.single('imageSrc'), contactCtrl.updateContact); 
+app.post('/api/contacts/update', upload.single('file'), contactCtrl.processRequest, contactCtrl.processImage, contactCtrl.updateContact); 
     
 app.listen(5000, function () {
   console.log("Example app listening on port http://localhost:5000/");
